@@ -1,48 +1,79 @@
 ---
 title: Check if Two Strings are Anagrams
-description: Write a function that removes duplicate elements from an array.
+description: Write a function that checks if two strings are anagrams
 date: "2024-03-20"
 language: "javascript"
 ---
 
 ## Question
-Write a function that removes duplicate elements from an array.
+Write a function that checks if two strings are anagrams.
+An anagram is a word or phrase formed by rearranging the letters of a different word or phrase,
+typically using all the original letters exactly once.
+
+<CodeEditor 
+    initialCode={"const areAnagrams = (str1, str2) => {\n...\n}"}
+    checkTests={[
+        {
+        call: "areAnagrams('aabbcc', 'ccbbaa')",
+        expectedResult: true
+        },
+        {
+        call: "areAnagrams('banana', 'orange')",
+        expectedResult: false
+        },
+        {
+        call: "areAnagrams('listen', 'silent')",
+        expectedResult: true,
+        hidden: true
+        },
+        {
+        call: "areAnagrams('alcapaha', 'pahaalca')",
+        expectedResult: true,
+        hidden: true
+        },
+      {
+         call: "areAnagrams('', '')",
+         expectedResult: true,
+         hidden: true
+      },
+        ]}
+/>
+
+<details>
+  <summary>See Solution</summary>
 
 ## Example
 ```ts
-const removeDuplicates = (myArray: number[]) => {
-   return Array.from(new Set(myArray))
+const areAnagrams = (str1, str2) => {
+      return str1.split('').sort().join('') === str2.split('').sort().join('');
 }
 ```
 
 ### Explanation
-The operation is simple.
-We loop through the numbers from 1 to 100 and check if the number is divisible by 3, 5 or both. 
-If it is divisible by 3, we print "Fizz", if it is divisible by 5, we print "Buzz" and if it is divisible by both 3 and 5, we print "FizzBuzz". 
-If none of the conditions are met, we print the number itself.
+The function `areAnagrams` takes two strings as arguments and returns a boolean value. 
+The function first splits the strings into an array of characters, then sorts the array and joins the characters back into a string. 
+The function then compares the two strings and returns true if they are equal and false if they are not.
 
 ## Complexity Analysis
-The time complexity for this algorithm is O(n) where n is the value given to the function.
-
+The time complexity for this solution is O(nlogn) because of the sorting operation.
 
 ## Alternative
 ### For loop
 ```ts
-const findLargest = (myArray: number[]) => {
-   let result = []
-   for(const i of myArray){
-      if(!result.includes(i)){
-         result.append(i)
+const areAnagrams = (str1, str2) => {
+      if (str1.length !== str2.length) return false;
+      const str1Map = {};
+      const str2Map = {};
+      for (let i = 0; i < str1.length; i++) {
+         str1Map[str1[i]] = (str1Map[str1[i]] || 0) + 1;
+         str2Map[str2[i]] = (str2Map[str2[i]] || 0) + 1;
       }
+      for (let key in str1Map) {
+         if (str1Map[key] !== str2Map[key]) return false;
+      }
+      return true;
    }
-   return result
-}
 ```
 
-### Spreeding
-```ts
-function removeDuplicates(myArray: number[]) {
-    return [...new Set(myArray)];
-}
-```
 
+</details>

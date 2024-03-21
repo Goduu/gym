@@ -8,34 +8,46 @@ language: "javascript"
 ## Question
 Write a function that merges two sorted arrays into a single sorted array.
 
-## Example
-```ts
-function areAnagrams(str1: str, str2: str) {
-    return str1.split('').sort().join('') === str2.split('').sort().join('');
+<CodeEditor 
+    initialCode={"cons mergeSortedArrays = (array1, array2) => {\n...\n}"}
+    checkTests={[
+        {
+        call: "mergeSortedArrays([1,2,3], [4,5,6])",
+        expectedResult: [1,2,3,4,5,6]
+        },
+        {
+        call: "mergeSortedArrays([1,1,2,6], [2,7,9])",
+        expectedResult: [1,1,2,2,6,7,9]
+        },
+        {
+        call: "mergeSortedArrays([-1,0,3,3,9], [-2,0,7,10])",
+        expectedResult: [-2,-1,0,0,3,3,7,9,10],
+        hidden: true
+        },
+        ]}
+/>
+
+<details>
+  <summary>See Solution</summary>
+
+## Solution
+```js
+function mergeSortedArrays(array1, array2) {
+    return array1.concat(array2).sort((a, b) => a - b);
 }
 
 ```
 
 ### Explanation
-The function `areAnagrams` takes two strings as input and returns a boolean value. 
-The function first splits the strings into arrays of characters, sorts the arrays, 
-and then joins them back into strings. 
-The function then compares the two strings and returns `true` if they are anagrams and `false` otherwise.
+1. The function `mergeSortedArrays` takes two arrays as input.
+2. It concatenates the two arrays using the `concat` method.
+3. It then sorts the concatenated array using the `sort` method with a comparator function that compares two elements `a` and `b` and returns a negative value if `a` should come before `b`, a positive value if `a` should come after `b`, and zero if they are equal.
 
 ## Complexity Analysis
-The time complexity for this approach is O(n log n), where n is the length of the input strings.
-
-## Alternative
-### For loop
-```ts
-const areAnagrams = (str1: str, str2: str) => {
-   for(const i of str1){
-      if(!str2.includes(i)){
-         return false
-      }
-   }
-   return true
-}
-```
+The time complexity for this solution is O((n+m)log(n+m)), where n and m are the lengths of the two input arrays.
+This is because the `sort` method has a time complexity of O(nlogn), where n is the length of the array.
 
 
+
+
+</details>

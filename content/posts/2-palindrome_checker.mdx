@@ -8,9 +8,37 @@ language: "javascript"
 ## Question
 Write a function that checks whether a given string is a palindrome.
 
+<CodeEditor 
+    initialCode={"const isPalindrome = (str) => {\n...\n}"}
+    checkTests={[
+        {
+        call: "isPalindrome('palindrome')",
+        expectedResult: false
+        },
+        {
+        call: "isPalindrome('mom')",
+        expectedResult: true
+        },
+        {
+        call: "isPalindrome('abcdf')",
+        expectedResult: false,
+        hidden: true
+        },
+        {
+        call: "isPalindrome('abccba')",
+        expectedResult: true,
+        hidden: true
+        },
+        ]}
+/>
+
+<details>
+  <summary>See Solution</summary>
+
+## Solution
 
 ```javascript
-function isPalindrome(str) {
+const isPalindrome = (str) => {
     return str === str.split('').reverse().join('');
 }
 ```
@@ -31,3 +59,4 @@ console.log(isPalindrome('hello')); // false
 The time complexity of this function is O(n), where n is the length of the input string. 
 This is because the function iterates over each character in the string to reverse it and then compares the reversed string to the original string.
 
+</details>

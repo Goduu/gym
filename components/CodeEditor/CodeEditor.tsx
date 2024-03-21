@@ -1,10 +1,9 @@
 "use client"
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
-import { FC, useCallback, useRef, useState } from 'react';
+import { FC, Suspense, useCallback, useRef, useState } from 'react';
 import { CheckTest } from './types';
-import { ResultCheck } from './ResultCheck';
-import { CheckTestItem } from './CheckTest';
+import { CheckTestItem } from './CheckTestItem';
 
 
 export type CodeEditorProps = {
@@ -26,9 +25,9 @@ export const CodeEditor: FC<CodeEditorProps> = ({ initialCode, height = "auto", 
         setTests(tests.map(test => {
             try {
                 const result = eval(code + "; " + test.call)
-                return { ...test, result }
+                return { ...test, result, testRun: true }
             } catch (error) {
-                return { ...test, result: error }
+                return { ...test, result: error, testRun: true }
             }
         }))
     };

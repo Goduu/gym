@@ -24,6 +24,20 @@ Write a function that takes a string as input and returns the string reversed.
         expectedResult: 'vfcdxsyar4e3w2q1',
         hidden: true
         },
+        {
+            call: "reverseString('')",
+            expectedResult: ''
+        },
+        {
+            call: "reverseString('a')",
+            expectedResult: 'a',
+            hidden: true
+        },
+        {
+            call: "reverseString('1234567890')",
+            expectedResult: '0987654321',
+            hidden: true
+        }
         ]}
 />
 
@@ -42,11 +56,6 @@ The `split()` method is used to split a string into an array of substrings, and 
 The `reverse()` method is used to reverse the elements in an array.
 The `join()` method is used to join all elements of an array into a string.
 
-### Example
-```javascript
-reverseString("hello") // "olleh"
-reverseString("world") // "dlrow"
-```
 
 ### Time Complexity
 The time complexity is O(n) because we are iterating through the string once.

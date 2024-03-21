@@ -8,34 +8,67 @@ language: "javascript"
 ## Question
 Write a function that finds the largest number in an array.
 
-## Example
+
+<CodeEditor 
+    initialCode={"cons findLargest = (myArray) => {\n...\n}"}
+    checkTests={[
+        {
+        call: "findLargest([100,10,20])",
+        expectedResult: 100
+        },
+        {
+        call: "findLargest([-5, -2, 0])",
+        expectedResult: 0
+        },
+      {
+         call: "findLargest([-1])",
+         expectedResult: -1,
+      },
+        {
+        call: "findLargest([-3,30,9,-9,0,0,0])",
+        expectedResult: 30,
+        },
+        {
+         call: "findLargest([])",
+         expectedResult: undefined,
+      },
+      {
+         call: "findLargest([0])",
+         expectedResult: 0,
+         hidden: true
+      }
+        ]}
+/>
+
+<details>
+  <summary>See Solution</summary>
+
 ```ts
 const findLargest = (myArray) => {
-   return Math.max(myArray)
+   if(myArray.length === 0) return undefined
+   return Math.max(...myArray)
 }
 ```
 
 ### Explanation
-The operation is simple.
-We loop through the numbers from 1 to 100 and check if the number is divisible by 3, 5 or both. 
-If it is divisible by 3, we print "Fizz", if it is divisible by 5, we print "Buzz" and if it is divisible by both 3 and 5, we print "FizzBuzz". 
-If none of the conditions are met, we print the number itself.
+The Math.max() function is used to find the largest number in a list of numbers. 
+The spread operator is used to pass the elements of the array as arguments to the Math.max() function.
 
 ## Complexity Analysis
-The time complexity for this algorithm is O(n) where n is the value given to the function.
-
+The time complexity for this solution is O(n) where n is the number of elements in the array.
 
 ## Alternative
 ### For loop
 ```ts
-const findLargest = (myArray: List[number]) => {
-   let result = 0
-   for(const i of myArray){
-    if(i > result){
-      result = i
-    }
+const findLargest = (myArray) => {
+   if(myArray.length === 0) return undefined
+   let largest = myArray[0]
+   for(let i = 1; i < myArray.length; i++){
+      if(myArray[i] > largest){
+         largest = myArray[i]
+      }
    }
-   return result
+   return largest
 }
 ```
 
@@ -43,14 +76,16 @@ const findLargest = (myArray: List[number]) => {
 ```ts
 import {max} from lodash
 
-const findLargest = (myArray: List[number]) => {
+const findLargest = (myArray) => {
    return max(myArray)
 }
 ```
 
-### Not so good with sorting
+### With sorting
 ```ts
-const findLargest = (myArray: List[number]) => {
-   return myArray.sort((a,b) => a<b)[0]
+const findLargest = (myArray) => {
+   return myArray.sort((a,b) => b - a)[0]
 }
 ```
+
+</details>

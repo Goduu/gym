@@ -8,41 +8,65 @@ language: "javascript"
 ## Question
 Write a function that removes duplicate elements from an array.
 
-## Example
-```ts
-const removeDuplicates = (myArray: number[]) => {
+<CodeEditor 
+    initialCode={"cons removeDuplicates = (myArray) => {\n...\n}"}
+    checkTests={[
+        {
+        call: "removeDuplicates([1,2,3])",
+        expectedResult: [1,2,3]
+        },
+        {
+        call: "removeDuplicates([1,1,1,1])",
+        expectedResult: [1]
+        },
+        {
+           call: "removeDuplicates([])",
+           expectedResult: []
+        },
+        {
+        call: "removeDuplicates([1,1,1,2,2,1,2,9,7])",
+        expectedResult: [1,2,9,7],
+        hidden: true
+        },
+        ]}
+/>
+
+<details>
+  <summary>See Solution</summary>
+
+```js
+const removeDuplicates = (myArray) => {
    return Array.from(new Set(myArray))
 }
 ```
 
-### Explanation
-The operation is simple.
-We loop through the numbers from 1 to 100 and check if the number is divisible by 3, 5 or both. 
-If it is divisible by 3, we print "Fizz", if it is divisible by 5, we print "Buzz" and if it is divisible by both 3 and 5, we print "FizzBuzz". 
-If none of the conditions are met, we print the number itself.
+### Examplanation
+- We use the `Set` object to store unique values of any type.
+- We then convert the `Set` object to an array using the `Array.from` method.
+
 
 ## Complexity Analysis
-The time complexity for this algorithm is O(n) where n is the value given to the function.
-
+The time complexity for this solution is O(n) where n is the length of the input array.
 
 ## Alternative
 ### For loop
 ```ts
-const findLargest = (myArray: number[]) => {
-   let result = []
-   for(const i of myArray){
-      if(!result.includes(i)){
-         result.append(i)
+function removeDuplicates(myArray) {
+      let uniqueArray = [];
+      for (let i = 0; i < myArray.length; i++) {
+         if (uniqueArray.indexOf(myArray[i]) === -1) {
+               uniqueArray.push(myArray[i]);
+         }
       }
-   }
-   return result
+      return uniqueArray;
 }
 ```
 
 ### Spreeding
 ```ts
-function removeDuplicates(myArray: number[]) {
+function removeDuplicates(myArray) {
     return [...new Set(myArray)];
 }
 ```
 
+</details>

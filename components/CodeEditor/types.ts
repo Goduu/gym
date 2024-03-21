@@ -3,4 +3,5 @@ export type CheckTest = {
     expectedResult: any,
     result?: any | undefined
     hidden: boolean
+    testRun: boolean
 }

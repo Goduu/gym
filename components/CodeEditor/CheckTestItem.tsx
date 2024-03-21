@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { CheckTest } from './types'
 import { ResultCheck } from './ResultCheck'
+import { stringifyVariable } from './functions'
 
 export type CheckTestItemProps = {
   test: CheckTest
@@ -11,8 +12,8 @@ export const CheckTestItem: FC<CheckTestItemProps> = ({ test }) => {
 
   return (
     <div className="flex justify-between">
-      <code>{hiddenTest ? "Hidden Test" : test.call}</code>
-      <div>Expected: {hiddenTest ? "?" : test.expectedResult}</div>
+      <code className='w-1/2'>{hiddenTest ? "Hidden Test" : test.call}</code>
+      <div>Expected: {hiddenTest ? "?" : stringifyVariable(test.expectedResult)}</div>
       <ResultCheck test={test} />
     </div>
   )

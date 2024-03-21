@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import { CheckTest } from './types'
 import { FaRegCircleCheck, FaRegCircleQuestion, FaRegCircleXmark } from 'components/Icons'
 import { ResultTooltip } from './ResultTooltip'
+import { stringifyVariable } from './functions'
 
 type ResultCheckProps = {
     test: CheckTest
@@ -22,10 +23,14 @@ export const ResultCheck: FC<ResultCheckProps> = ({ test }) => {
         return test.result
     }
 
+    const testPassed = (test: CheckTest) => {
+        return stringifyVariable(test.result) === stringifyVariable(test.expectedResult)
+    }
+
     return (
         <div>
-            {test.result ?
-                test.result === test.expectedResult ?
+            {test.testRun ?
+                testPassed(test) ?
                     <FaRegCircleCheck className='w-7 text-emerald-700' /> :
                     <div>
                         <ResultTooltip tooltip={getErrorTooltip(test)}>

@@ -6,52 +6,77 @@ language: "javascript"
 ---
 
 ## Question
-Write a function that finds the largest number in an array.
+Write a function that reverses an integer.
 
-## Example
+<CodeEditor 
+    initialCode={"cons reverseInteger = (myInteger) => {\n...\n}"}
+    checkTests={[
+        {
+        call: "reverseInteger(987)",
+        expectedResult: 789
+        },
+        {
+        call: "reverseInteger(1234)",
+        expectedResult: 4321
+        },
+        {
+        call: "reverseInteger(-12)",
+        expectedResult: -21
+        },
+        {
+        call: "reverseInteger(-123)",
+        expectedResult: -321,
+        hidden: true
+        },
+         {
+            call: "reverseInteger(0)",
+            expectedResult: 0,
+            hidden: true
+         },
+        ]}
+/>
+
+<details>
+  <summary>See Solution</summary>
+
 ```ts
-const reverseInteger = (myInteger: int) => {
-   const reversed =  parseInt(int.toString().split('').reverse().join(''))
+const reverseInteger = (myInteger) => {
+   const reversed =  parseInt(myInteger.toString().split('').reverse().join(''))
    return Math.sign(myInteger) * reversed
 }
 ```
 
 ### Explanation
-The operation is simple.
-We loop through the numbers from 1 to 100 and check if the number is divisible by 3, 5 or both. 
-If it is divisible by 3, we print "Fizz", if it is divisible by 5, we print "Buzz" and if it is divisible by both 3 and 5, we print "FizzBuzz". 
-If none of the conditions are met, we print the number itself.
+The function takes an integer as an argument and converts it to a string.
+It then splits the string into an array of characters, reverses the array, 
+and joins it back to a string. The string is then converted back to an integer. 
+The function then multiplies the integer by the sign of the original integer to ensure that the result has the same sign as the original integer.
 
 ## Complexity Analysis
-The time complexity for this algorithm is O(n) where n is the value given to the function.
+The time complexity for this function is O(n) where n is the number of digits in the integer.
 
+## Alternatives
 
-## Alternative
 ### For loop
-```ts
-const findLargest = (myArray: List[number]) => {
-   let result = 0
-   for(const i of myArray){
-    if(i > result){
-      result = i
-    }
+```js
+const reverseInteger = (myInteger) => {
+      let reversed = 0
+      while(myInteger !== 0){
+         reversed = reversed * 10 + myInteger % 10
+         myInteger = parseInt(myInteger / 10)
+      }
+      return reversed
    }
-   return result
-}
 ```
 
 ### Lodash
 ```ts
-import {max} from lodash
+import { reverse } from 'lodash'
 
-const findLargest = (myArray: List[number]) => {
-   return max(myArray)
+const reverseInteger = (myInteger) => {
+   return parseInt(reverse(myInteger.toString().split('')).join(''))
 }
+
 ```
 
-### Not so good with sorting
-```ts
-const findLargest = (myArray: List[number]) => {
-   return myArray.sort((a,b) => a<b)[0]
-}
-```
+</details>

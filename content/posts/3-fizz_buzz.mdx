@@ -6,24 +6,41 @@ language: "javascript"
 ---
 
 ## Question
-Write a program that prints the numbers from 1 to 100. 
-But for multiples of three print "Fizz" instead of the number and for the multiples of five print "Buzz". 
-For numbers which are multiples of both three and five print "FizzBuzz".
+Write a program that receives an array of positive numbers. 
+And return an array of strings with the same size of the original array.
+For multiples of three return "Fizz" instead of the number and for the multiples of five returns "Buzz". 
+For numbers which are multiples of both three and five print "FizzBuzz". If not mutiple of three nor five return the number.
 
-## Example
+<CodeEditor 
+    initialCode={"const fizzBuzz = () => {\n...\n}"}
+    checkTests={[
+        {
+        call: "fizzBuzz([1,3,3,5,10,15,7])",
+        expectedResult: ["1", "Fizz", "Fizz", "Buzz", "Buzz", "FizzBuzz", "7"]
+        },
+        ]}
+/>
+
+<details>
+  <summary>See Solution</summary>
+
+## Solution
+
 ```javascript
-const fizzBuzz = () => {
-    for(let i = 1; i <= 100; i++){
+const fizzBuzz = (myArray) => {
+    const result = []
+    for(const i of myArray){
         if(i%3 === 0 && i%5 === 0){
-            console.log("FizzBuzz")
+            result.push("FizzBuzz")
         } else if(i%3 === 0 ){
-            console.log("Fizz")
+            result.push("Fizz")
         } else if(i%5 === 0){
-            console.log("Buzz")
+            result.push("Buzz")
         } else {
-            console.log(i)
+            result.push(i.toString())
         }
     }
+    return result
 }
 ```
 
@@ -48,3 +65,5 @@ const fizzBuzz = () => {
         console.log(output || i)
     })
 }
+```
+</details>

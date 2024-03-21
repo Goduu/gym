@@ -8,9 +8,51 @@ language: "javascript"
 ## Question
 Write a function that finds the sum of all elements in an array.
 
-## Example
-```ts
-const sumArray = (myArray: List[number]) => {
+
+<CodeEditor 
+    initialCode={"const sumArray = (myArray) => {\n...\n}"}
+    checkTests={[
+        {
+        call: "sumArray([1,10,20])",
+        expectedResult: 31
+        },
+        {
+        call: "sumArray([-5, -2, 0])",
+        expectedResult: -7
+        },
+        {
+         call: "sumArray([])",
+         expectedResult: 0,
+        },
+        {
+        call: "sumArray([-3,3,9,-9,0,0,0])",
+        expectedResult: 0,
+        hidden: true
+        },
+      {
+         call: "sumArray([])",
+         expectedResult: 0,
+         hidden: true
+      },
+      {
+         call: "sumArray([0])",
+         expectedResult: 0,
+         hidden: true
+      },
+      {
+         call: "sumArray([-1, 1])",
+         expectedResult: 0,
+         hidden: true
+      }
+        ]}
+/>
+
+<details>
+  <summary>See Solution</summary>
+
+## Solution
+```js
+const sumArray = (myArray) => {
    return myArray.reduce((acc, current) => acc + current, 0)
 }
 ```
@@ -29,12 +71,14 @@ The time complexity for this algorithm is O(n) where n is the value given to the
 
 ## Alternative
 ### Recursive
-```javascript
-const sumArray = (myArray: List[number]) => {
-   const result = 0
+```js
+const sumArray = (myArray) => {
+   let result = 0
    for(const i of myArray){
     result += i
    }
    return result
 }
 ```
+
+</details>

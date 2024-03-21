@@ -8,13 +8,53 @@ language: "javascript"
 ## Question
 Write a function that computes the factorial of a given number.
 
-## Example
+<CodeEditor 
+        initialCode={"const factorial = (val) => {\n...\n}"}
+        checkTests={[
+                {
+                call: "factorial(0)",
+                expectedResult: 1
+                },
+                {
+                call: "factorial(1)",
+                expectedResult: 1
+                },
+                {
+                call: "factorial(5)",
+                expectedResult: 120,
+                },
+                {
+                call: "factorial(-1)",
+                expectedResult: null,
+                },
+                {
+                call: "factorial(3)",
+                expectedResult: 6,
+                hidden: true
+                },
+                {
+                call: "factorial(10)",
+                expectedResult: 3628800,
+                hidden: true
+                },
+                {
+                call: "factorial(20)",
+                expectedResult: 2432902008176640000,
+                hidden: true
+                }
+        ]}
+/>
+
+
+<details>
+  <summary>See Solution</summary>
+
+## Solution
 ```ts
-const factorial = (val: number) => {
-    let result = 1
-    for(let i = val; i > 0; i--){
-        result *= val
-    }
+const factorial = (val) => {
+    if(val < 0) return null
+    if(val === 0) return 1
+    return val * factorial(val - 1)
 }
 ```
 
@@ -29,13 +69,16 @@ The time complexity for this algorithm is O(n) where n is the number of elements
 
 
 ## Alternatives
-```javascript
-const fizzBuzz = () => {
-    Array.from({length: 10}, (_, i) => {
-        i++
-        let output = ""
-        if(i % 3 === 0) output += "Fizz"
-        if(i % 5 === 0) output += "Buzz"
-        console.log(output || i)
-    })
+```js
+const factorial = (val) => {
+    if(val < 0) return null
+    if(val === 0) return 1
+    let result = 1
+    for(let i = 1; i <= val; i++) {
+        result *= i
+    }
+    return result
 }
+```
+
+</details>
