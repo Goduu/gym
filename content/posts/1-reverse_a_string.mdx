@@ -1,0 +1,54 @@
+---
+title: Reverse a string
+description: Reverse a string
+date: "2024-03-20"
+language: "javascript"
+---
+
+## Question
+Write a function that takes a string as input and returns the string reversed.
+
+<CodeEditor 
+    initialCode={"const reverseString = (str) => {\n...\n}"}
+    checkTests={[
+        {
+        call: "reverseString('hello')",
+        expectedResult: 'olleh'
+        },
+        {
+        call: "reverseString('w0rld')",
+        expectedResult: 'dlr0w'
+        },
+        {
+        call: "reverseString('1q2w3e4raysxdcfv')",
+        expectedResult: 'vfcdxsyar4e3w2q1',
+        hidden: true
+        },
+        ]}
+/>
+
+<details>
+  <summary>See Solution</summary>
+
+## Solution
+```javascript
+const reverseString = (str) => {
+    return str.split('').reverse().join('');
+}
+```
+
+### Explanation
+The `split()` method is used to split a string into an array of substrings, and returns the new array.
+The `reverse()` method is used to reverse the elements in an array.
+The `join()` method is used to join all elements of an array into a string.
+
+### Example
+```javascript
+reverseString("hello") // "olleh"
+reverseString("world") // "dlrow"
+```
+
+### Time Complexity
+The time complexity is O(n) because we are iterating through the string once.
+
+</details>

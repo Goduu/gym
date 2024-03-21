@@ -1,0 +1,41 @@
+---
+title: Merge Two Sorted Arrays
+description: Write a function that merges two sorted arrays into a single sorted array.
+date: "2024-03-20"
+language: "javascript"
+---
+
+## Question
+Write a function that merges two sorted arrays into a single sorted array.
+
+## Example
+```ts
+function areAnagrams(str1: str, str2: str) {
+    return str1.split('').sort().join('') === str2.split('').sort().join('');
+}
+
+```
+
+### Explanation
+The function `areAnagrams` takes two strings as input and returns a boolean value. 
+The function first splits the strings into arrays of characters, sorts the arrays, 
+and then joins them back into strings. 
+The function then compares the two strings and returns `true` if they are anagrams and `false` otherwise.
+
+## Complexity Analysis
+The time complexity for this approach is O(n log n), where n is the length of the input strings.
+
+## Alternative
+### For loop
+```ts
+const areAnagrams = (str1: str, str2: str) => {
+   for(const i of str1){
+      if(!str2.includes(i)){
+         return false
+      }
+   }
+   return true
+}
+```
+
+

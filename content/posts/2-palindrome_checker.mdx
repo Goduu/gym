@@ -1,0 +1,33 @@
+---
+title: Palindrome Checker
+description: Write a function that checks whether a given string is a palindrome.
+date: "2024-03-20"
+language: "javascript"
+---
+
+## Question
+Write a function that checks whether a given string is a palindrome.
+
+
+```javascript
+function isPalindrome(str) {
+    return str === str.split('').reverse().join('');
+}
+```
+
+### Explanation
+The function `isPalindrome` takes a string as an argument and returns a boolean value indicating whether the string is a palindrome.
+A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward.
+The function uses the `split`, `reverse`, and `join` methods to reverse the string and then compares it to the original string to determine if it is a palindrome.
+If the reversed string is equal to the original string, the function returns `true`, indicating that the string is a palindrome. Otherwise, it returns `false`.
+
+### Example
+```javascript
+console.log(isPalindrome('racecar')); // true
+console.log(isPalindrome('hello')); // false
+```
+
+### Time Complexity
+The time complexity of this function is O(n), where n is the length of the input string. 
+This is because the function iterates over each character in the string to reverse it and then compares the reversed string to the original string.
+

@@ -1,0 +1,56 @@
+---
+title: Find the Largest Number in an Array
+description: Write a function that finds the largest number in an array.
+date: "2024-03-20"
+language: "javascript"
+---
+
+## Question
+Write a function that finds the largest number in an array.
+
+## Example
+```ts
+const findLargest = (myArray) => {
+   return Math.max(myArray)
+}
+```
+
+### Explanation
+The operation is simple.
+We loop through the numbers from 1 to 100 and check if the number is divisible by 3, 5 or both. 
+If it is divisible by 3, we print "Fizz", if it is divisible by 5, we print "Buzz" and if it is divisible by both 3 and 5, we print "FizzBuzz". 
+If none of the conditions are met, we print the number itself.
+
+## Complexity Analysis
+The time complexity for this algorithm is O(n) where n is the value given to the function.
+
+
+## Alternative
+### For loop
+```ts
+const findLargest = (myArray: List[number]) => {
+   let result = 0
+   for(const i of myArray){
+    if(i > result){
+      result = i
+    }
+   }
+   return result
+}
+```
+
+### Lodash
+```ts
+import {max} from lodash
+
+const findLargest = (myArray: List[number]) => {
+   return max(myArray)
+}
+```
+
+### Not so good with sorting
+```ts
+const findLargest = (myArray: List[number]) => {
+   return myArray.sort((a,b) => a<b)[0]
+}
+```

@@ -1,0 +1,48 @@
+---
+title: Check if Two Strings are Anagrams
+description: Write a function that removes duplicate elements from an array.
+date: "2024-03-20"
+language: "javascript"
+---
+
+## Question
+Write a function that removes duplicate elements from an array.
+
+## Example
+```ts
+const removeDuplicates = (myArray: number[]) => {
+   return Array.from(new Set(myArray))
+}
+```
+
+### Explanation
+The operation is simple.
+We loop through the numbers from 1 to 100 and check if the number is divisible by 3, 5 or both. 
+If it is divisible by 3, we print "Fizz", if it is divisible by 5, we print "Buzz" and if it is divisible by both 3 and 5, we print "FizzBuzz". 
+If none of the conditions are met, we print the number itself.
+
+## Complexity Analysis
+The time complexity for this algorithm is O(n) where n is the value given to the function.
+
+
+## Alternative
+### For loop
+```ts
+const findLargest = (myArray: number[]) => {
+   let result = []
+   for(const i of myArray){
+      if(!result.includes(i)){
+         result.append(i)
+      }
+   }
+   return result
+}
+```
+
+### Spreeding
+```ts
+function removeDuplicates(myArray: number[]) {
+    return [...new Set(myArray)];
+}
+```
+

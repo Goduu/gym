@@ -1,0 +1,40 @@
+---
+title: Sum of Array
+description: Write a function that finds the sum of all elements in an array.
+date: "2024-03-20"
+language: "javascript"
+---
+
+## Question
+Write a function that finds the sum of all elements in an array.
+
+## Example
+```ts
+const sumArray = (myArray: List[number]) => {
+   return myArray.reduce((acc, current) => acc + current, 0)
+}
+```
+
+
+
+### Explanation
+The operation is simple.
+We loop through the numbers from 1 to 100 and check if the number is divisible by 3, 5 or both. 
+If it is divisible by 3, we print "Fizz", if it is divisible by 5, we print "Buzz" and if it is divisible by both 3 and 5, we print "FizzBuzz". 
+If none of the conditions are met, we print the number itself.
+
+## Complexity Analysis
+The time complexity for this algorithm is O(n) where n is the value given to the function.
+
+
+## Alternative
+### Recursive
+```javascript
+const sumArray = (myArray: List[number]) => {
+   const result = 0
+   for(const i of myArray){
+    result += i
+   }
+   return result
+}
+```
