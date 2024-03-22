@@ -1,9 +1,9 @@
 "use client"
 import React, { FC } from 'react'
 import { CheckTest } from './types'
-import { FaRegCircleCheck, FaRegCircleQuestion, FaRegCircleXmark } from 'components/Icons'
-import { ResultTooltip } from './ResultTooltip'
+import { FaRegCircleCheck, FaRegCircleQuestion, FaRegCircleXmark } from '@/components/Icons'
 import { stringifyVariable } from './functions'
+import { ResultTooltip } from './ResultTooltip'
 
 type ResultCheckProps = {
     test: CheckTest

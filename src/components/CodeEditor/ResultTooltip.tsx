@@ -5,7 +5,6 @@ export type ResultTooltipProps = {
     tooltip: string
 }
 export const ResultTooltip: FC<ResultTooltipProps> = ({ children, tooltip }) => {
-    const ref = useRef<HTMLDivElement>(null)
 
     return (
         <div className="group relative">

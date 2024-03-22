@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 import { Metadata } from "next"
 
-import { Mdx } from "components/MdxComponents"
+import { Mdx } from "@/components/MdxComponents"
 import { allPages } from "@contentlayer/generated"
 
 interface PageProps {

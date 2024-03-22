@@ -1,7 +1,7 @@
 "use client"
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
-import { FC, Suspense, useCallback, useRef, useState } from 'react';
+import { FC, useCallback, useRef, useState } from 'react';
 import { CheckTest } from './types';
 import { CheckTestItem } from './CheckTestItem';
 
