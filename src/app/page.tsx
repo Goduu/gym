@@ -1,4 +1,5 @@
 "use client"
+import { Gym } from "@/components/Icons"
 import { allPosts } from "@contentlayer/generated"
 import Image from "next/image"
 import Link from "next/link"
@@ -7,7 +8,7 @@ export default function Home() {
   return (
     <div className="prose dark:prose-invert">
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Image src="/gym.svg" alt="logo" width={400} height={400} className="text-white" />
+        <Gym className="dark:fill-white w-3/4" />
       </div>
       {
         allPosts.map((post) => (
