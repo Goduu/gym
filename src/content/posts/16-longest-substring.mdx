@@ -1,0 +1,121 @@
+---
+title: Longest Substring
+description: Find the largest chain of characters without repetitio.
+date: "2024-03-29"
+language: "javascript"
+---
+
+## Question
+Given a string, find the largest chain of characters without repetition, i.e., find the longest substring without any repeating characters.
+
+<CodeEditor 
+    initialCode={`
+const longestSubstring = (str) => {\n...\n}`}
+    checkTests={[
+        {
+        call: `
+        longestSubstring("abcdefghijklmnopqrstuvwxyz")`,
+        expectedResult: "abcdefghijklmnopqrstuvwxyz"
+        },
+        {
+        call: `
+        longestSubstring("abcabcabcabcabcabcd")`,
+        expectedResult: "abcd"
+        },
+        {
+        call: `
+        longestSubstring("")`,
+        expectedResult: "",
+        hidden: true
+        },
+        {
+        call: `
+        longestSubstring("asdfgha")`,
+        expectedResult: "asdfgh",
+        hidden: true
+        },
+        {
+        call: `
+        longestSubstring("aaaaaaaaaaaaaaaaaaa")`,
+        expectedResult: "a",
+        hidden: true
+        },
+        ]}
+/>
+
+<details>
+<summary>See Solution</summary>
+
+## Solution
+
+### Basic idea
+The basic idea is to use a sliding window approach to find the longest substring without repeating characters. 
+We will use two pointers, `left` and `right`, to define the window. We will keep track of the characters we have seen so far using a set. 
+If we encounter a character that is already in the set, we will remove the character at the `left` pointer from the set and increment the `left` pointer. +
+We will update the longest substring if the current substring is longer than the previous longest substring.
+
+```js
+const longestSubstring = (str) => {
+    const seen = new Set();
+    let left = 0;
+    let right = 0;
+    let maxSubstring = '';
+    
+    while (right < str.length) {
+        if (!seen.has(str[right])) {
+            seen.add(str[right]);
+            if (right - left + 1 > maxSubstring.length) {
+                maxSubstring = str.slice(left, right + 1);
+            }
+            right++;
+        } else {
+            seen.delete(str[left]);
+            left++;
+        }
+    }
+    
+    return maxSubstring;
+}
+
+
+```
+
+### Algorithm Detailed Explanation
+1. Create a set to store the characters we have seen so far.
+2. Create two pointers, `left` and `right`, and initialize them to 0.
+3. Create a variable `maxSubstring` to store the longest substring without repeating characters.
+4. Iterate through the string using the `right` pointer.
+5. If the character at the `right` pointer is not in the set, add it to the set and increment the `right` pointer.
+6. If the character at the `right` pointer is in the set, remove the character at the `left` pointer from the set and increment the `left` pointer.
+7. Update the `maxSubstring` if the current substring is longer than the previous longest substring.
+8. Return the `maxSubstring` after the loop ends.
+
+## Complexity Analysis
+The time complexity of this solution is O(n), where n is the length of the input string.
+
+
+## Alternative
+### Burte Force
+
+```js
+const longestSubstring = (str) =>  {
+    let longestLength = 0;
+    let longestSubstring = '';
+    
+    for (let i = 0; i < str.length; i++) {
+        for (let j = i + 1; j <= str.length; j++) {
+            const substring = str.slice(i, j);
+            const set = new Set(substring);
+            if (set.size === substring.length && substring.length > longestLength) {
+                longestLength = substring.length;
+                longestSubstring = substring;
+            }
+        }
+    }
+    
+    return longestSubstring;
+}
+```
+</details>
+
+
