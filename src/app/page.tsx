@@ -6,8 +6,8 @@ import Link from "next/link"
 
 export default function Home() {
   return (
-    <div className="prose dark:prose-invert">
-      <div style={{ display: "flex", justifyContent: "center" }}>
+    <div className="prose dark:prose-invert justify-center">
+      <div className="flex justify-center" >
         <Gym className="dark:fill-white w-3/4" />
       </div>
       {

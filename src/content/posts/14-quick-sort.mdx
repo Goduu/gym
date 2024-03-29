@@ -1,0 +1,86 @@
+---
+title: Quick Sort
+description: Implement a function that sorts an array using the quick sort algorithm.
+date: "2024-03-20"
+language: "javascript"
+---
+
+## Question
+Quick Sort is a sorting algorithm that uses a divide-and-conquer approach to sort an array efficiently. 
+The algorithm works by selecting a pivot element from the array and partitioning the other elements into two sub-arrays according to whether they are less than or greater than the pivot. 
+The sub-arrays are then recursively sorted.
+
+<CodeEditor 
+    initialCode={"const quickSort = (myArray) => {\n...\n}"}
+    checkTests={[
+        {
+        call: "quickSort([9,4,2,1,5,3,1,5,8,4,3])",
+        expectedResult: [1,2,4,5,9]
+        },
+        {
+        call: "quickSort([])",
+        expectedResult: []
+        },
+        {
+        call: "quickSort([9,-1,4,-2,-3,8])",
+        expectedResult: [-3,-2,-1,4,8,9],
+        hidden: true
+        },
+        {
+        call: "quickSort([1,2,3,4,5,6,7,8,9])",
+        expectedResult: [1,2,3,4,5,6],
+        hidden: true
+        },
+        ]}
+/>
+
+<details>
+  <summary>See Solution</summary>
+
+## Solution
+
+```js
+const quickSort = (arr) => {
+    // Base case: If the array has 0 or 1 element, it's already sorted
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+    // Choose a pivot element (e.g., the last element)
+    const pivot = arr[arr.length - 1];
+    
+    // Partition the array into two sub-arrays: elements less than pivot and elements greater than pivot
+    const left = [];
+    const right = [];
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] < pivot) {
+            left.push(arr[i]);
+        } else {
+            right.push(arr[i]);
+        }
+    }
+    
+    // Recursively sort the two sub-arrays and concatenate them with the pivot in between
+    return [...quickSort(left), pivot, ...quickSort(right)];
+}
+```
+
+### Algorithm Detailed Explanation
+1. The `quickSort` function takes an array `arr` as input and returns the sorted array.
+2. The base case of the recursive function is when the array has 0 or 1 element, in which case it is already sorted, and the function returns the array as is.
+3. The pivot element is chosen as the last element of the array.
+4. The array is then partitioned into two sub-arrays: `left` and `right`. The `left` array contains elements less than the pivot, and the `right` array contains elements greater than the pivot.
+5. The `left` and `right` sub-arrays are recursively sorted using the `quickSort` function.
+6. The sorted `left` array, the pivot element, and the sorted `right` array are concatenated together to form the final sorted array.
+7. The function returns the sorted array.
+
+## Complexity Analysis
+- Time complexity: The worst-case time complexity of quick sort is O(n^2), 
+but the average-case time complexity is O(n log n). 
+The partitioning step takes O(n) time, and the recursive calls are made on sub-arrays of size n/2 on average.
+- Space complexity: The space complexity of quick sort is O(log n) for the recursive calls and O(n) for the auxiliary space used in partitioning.
+
+
+</details>
+
+

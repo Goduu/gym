@@ -1,0 +1,72 @@
+---
+title: Bubble Sort
+description: Implement a function that sorts an array using the bubble sort algorithm.
+date: "2024-03-20"
+language: "javascript"
+---
+
+## Question
+Bubble Sort is a sorting algorithm that repeatedly steps through the list, compares adjacent elements, 
+and swaps them if they are in the wrong order. The pass through the list is repeated until no swaps are needed,
+which indicates that the list is sorted.
+
+<CodeEditor 
+    initialCode={"const bubbleSort = (myArray) => {\n...\n}"}
+    checkTests={[
+        {
+        call: "bubbleSort([9,4,2,1,5])",
+        expectedResult: [1,2,4,5,9]
+        },
+        {
+        call: "bubbleSort([])",
+        expectedResult: []
+        },
+        {
+        call: "bubbleSort([9,-1,4,-2,-3,8])",
+        expectedResult: [-3,-2,-1,4,8,9],
+        hidden: true
+        },
+        {
+        call: "bubbleSort([1,2,3,4,5,6])",
+        expectedResult: [1,2,3,4,5,6],
+        hidden: true
+        },
+        ]}
+/>
+
+<details>
+  <summary>See Solution</summary>
+
+## Solution
+
+```js
+const bubbleSort = (arr) => {
+    const n = arr.length;
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Swap arr[j] and arr[j+1]
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+        }
+    }
+    return arr;
+
+}
+```
+
+### Algorithm Detailed Explanation
+1. The outer loop runs from 0 to n-1, where n is the number of elements in the array.
+2. The inner loop runs from 0 to n-i-1, where i is the current iteration of the outer loop.
+3. In each iteration of the inner loop, we compare adjacent elements and swap them if they are in the wrong order.
+4. After each iteration of the outer loop, the largest element in the unsorted part of the array bubbles up to its correct position.
+5. The algorithm repeats this process until no swaps are needed, indicating that the array is sorted.
+
+## Complexity Analysis
+- Time complexity: O(n^2) in the worst case, where n is the number of elements in the array.
+- Space complexity: O(1) as the algorithm sorts the array in place without using any extra space.
+
+
+</details>
+
+

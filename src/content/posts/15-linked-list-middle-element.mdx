@@ -1,0 +1,108 @@
+---
+title: Middle Element in Linked List
+description: Implement a function to find the middle element of a linked list.
+date: "2024-03-28"
+language: "javascript"
+---
+
+## Question
+Implement a function to find the middle element of a linked list.
+
+### Tip
+The Merge Sort algorithm works as follows:
+
+Divide: Divide the unsorted array into two halves recursively until each sub-array contains only one element.
+Conquer: Merge the divided sub-arrays by sorting and combining them in a manner that results in a single sorted array.
+
+<CodeEditor 
+    initialCode={`
+class ListNode {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+        }
+}
+const createLinkedList = (arr, index = 0) => {
+    if (index === arr.length) {
+        return null; // Return null if the end of the array is reached
+    }
+
+    const head = new ListNode(arr[index]);
+    head.next = createLinkedList(arr, index + 1); // Recursive call to create the next node
+    return head;
+} 
+const findMiddleElement = (head) => {\n...\n}`}
+    checkTests={[
+        {
+        call: `
+        // list: 1 -> 2 -> 3 -> 4 -> 5 
+        const head = createLinkedList([1,2,3,4,5]);
+        findMiddleElement(head)`,
+        expectedResult: 3
+        },
+        {
+        call: `
+        // list: 1 
+        const head = createLinkedList([1]);
+        findMiddleElement(head)`,
+        expectedResult: 1
+        },
+        {
+        call: `
+        // list: 1 -> 10 -> 4 
+        const head = createLinkedList([1,10,4]);
+        findMiddleElement(head)`,
+        expectedResult: 10,
+        hidden: true
+        },
+        ]}
+/>
+
+<details>
+  <summary>See Solution</summary>
+
+## Solution
+
+### Basic idea
+To find the middle element of a linked list, we can use the two-pointer technique.
+We can have two pointers, `slow` and `fast`, starting from the head of the linked list.
+The `slow` pointer moves one step at a time, while the `fast` pointer moves two steps at a time.
+When the `fast` pointer reaches the end of the list, the `slow` pointer will be at the middle element.
+
+```js
+const findMiddleElement = (head) => {
+    if (!head) {
+        return null; // Empty list
+    }
+    
+    let slow = head;
+    let fast = head;
+    
+    // Move fast pointer two steps ahead and slow pointer one step ahead
+    // When fast pointer reaches the end, slow pointer will be at the middle
+    while (fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    
+    return slow.value;
+}
+
+
+```
+
+### Algorithm Detailed Explanation
+1. Initialize two pointers, `slow` and `fast`, pointing to the head of the linked list.
+2. Traverse the linked list using the two-pointer technique:
+    - Move the `slow` pointer one step ahead.
+    - Move the `fast` pointer two steps ahead.
+3. When the `fast` pointer reaches the end of the list (i.e., `fast` or `fast.next` is `null`), the `slow` pointer will be at the middle element.
+4. Return the value of the middle element.
+
+## Complexity Analysis
+The time complexity of this solution is O(n), where n is the number of nodes in the linked list.
+The space complexity is O(1) since we are using only two pointers.
+
+</details>
+
+

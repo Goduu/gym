@@ -1,0 +1,126 @@
+---
+title: Merge Sort
+description: Implement a function that sorts an array using the merge sort algorithm.
+date: "2024-03-20"
+language: "javascript"
+---
+
+## Question
+Merge Sort is a sorting algorithm that follows the divide-and-conquer approach. 
+The problem is to sort an array of elements in non-decreasing order (ascending order), 
+i.e., rearrange the elements such that they are in increasing order.
+
+### Tip
+The Merge Sort algorithm works as follows:
+
+Divide: Divide the unsorted array into two halves recursively until each sub-array contains only one element.
+Conquer: Merge the divided sub-arrays by sorting and combining them in a manner that results in a single sorted array.
+
+<CodeEditor 
+    initialCode={"const mergeSort = (myArray) => {\n...\n}"}
+    checkTests={[
+        {
+        call: "mergeSort([9,4,2,1,5])",
+        expectedResult: [1,2,4,5,9]
+        },
+        {
+        call: "mergeSort([])",
+        expectedResult: []
+        },
+        {
+        call: "mergeSort([9,-1,4,-2,-3,8])",
+        expectedResult: [-3,-2,-1,4,8,9],
+        hidden: true
+        },
+        {
+        call: "mergeSort([1,2,3,4,5,6])",
+        expectedResult: [1,2,3,4,5,6],
+        hidden: true
+        },
+        ]}
+/>
+
+<details>
+  <summary>See Solution</summary>
+
+## Solution
+
+### Basic idea
+Here's a general approach to solving the N-Queens problem using backtracking:
+
+- Start with an empty N×N chessboard.
+- Place a queen in the first row.
+- Move to the next row and place a queen in a safe position.
+- Continue this process recursively until all queens are placed or until it's not possible to place a queen without violating the constraints.
+- If a solution is found (i.e., all queens are placed), add it to the list of solutions.
+- Backtrack to explore other possibilities.
+
+```js
+const mergeSort = (arr) => {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    
+    // Divide the array into two halves
+    const mid = Math.floor(arr.length / 2);
+    const leftHalf = arr.slice(0, mid);
+    const rightHalf = arr.slice(mid);
+    
+    // Recursively sort the two halves
+    const sortedLeftHalf = mergeSort(leftHalf);
+    const sortedRightHalf = mergeSort(rightHalf);
+    
+    // Merge the sorted halves
+    return merge(sortedLeftHalf, sortedRightHalf);
+}
+
+function merge(left, right) {
+    let result = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
+
+    // Compare elements from both arrays and add the smaller one to the result array
+    while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+            result.push(left[leftIndex]);
+            leftIndex++;
+        } else {
+            result.push(right[rightIndex]);
+            rightIndex++;
+        }
+    }
+
+    // Add remaining elements from left array
+    while (leftIndex < left.length) {
+        result.push(left[leftIndex]);
+        leftIndex++;
+    }
+
+    // Add remaining elements from right array
+    while (rightIndex < right.length) {
+        result.push(right[rightIndex]);
+        rightIndex++;
+    }
+
+    return result;
+}
+
+
+```
+
+### Algorithm Detailed Explanation
+1. The `mergeSort` function takes an array `arr` as input and returns the sorted array.
+2. If the length of the input array is less than or equal to 1, the function returns the array as it is already sorted.
+3. Otherwise, the function calculates the middle index of the array and divides it into two halves: `leftHalf` and `rightHalf`.
+4. The function recursively calls `mergeSort` on the two halves to sort them.
+5. The sorted halves are then merged using the `merge` function, which compares elements from both halves and adds them to the result array in sorted order.
+6. The merged array is returned as the final sorted array.
+
+## Complexity Analysis
+The time complexity of the Merge Sort algorithm is O(n log n), where n is the number of elements in the input array. 
+This is because the array is divided into halves recursively, and the merge operation takes O(n) time.
+
+
+</details>
+
+
