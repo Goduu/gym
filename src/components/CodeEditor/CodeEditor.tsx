@@ -4,6 +4,7 @@ import { javascript } from '@codemirror/lang-javascript';
 import { FC, useCallback, useRef, useState } from 'react';
 import { CheckTest } from './types';
 import { CheckTestItem } from './CheckTestItem';
+import { useTheme } from "next-themes"
 
 
 export type CodeEditorProps = {
@@ -16,6 +17,9 @@ export const CodeEditor: FC<CodeEditorProps> = ({ initialCode, height = "auto", 
     const [code, setCode] = useState(initialCode);
     const [tests, setTests] = useState<CheckTest[]>(checkTests);
     const editorRef = useRef(null);
+    const { theme } = useTheme()
+    const darkLightTheme = theme === "dark" ? "dark" : "light"
+
 
     const onChange = useCallback((val, viewUpdate) => {
         setCode(val);
@@ -34,7 +38,7 @@ export const CodeEditor: FC<CodeEditorProps> = ({ initialCode, height = "auto", 
 
     return (
         <div className='py-4 mb-10'>
-            <CodeMirror value={code} ref={editorRef} height={height} extensions={[javascript({ jsx: true })]} onChange={onChange} />
+            <CodeMirror value={code} ref={editorRef} height={height} extensions={[javascript({ jsx: true })]} onChange={onChange} theme={darkLightTheme} />
             <div className="mt-4">
                 <div className='flex justify-between items-center'>
                     <h2>
