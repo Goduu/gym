@@ -1,0 +1,95 @@
+---
+title: Prime number
+description: Given an integer, return true if it's a prime number, false otherwise.
+date: "2024-04-22"
+language: "javascript"
+---
+
+## Question
+Given an integer, return true if it's a prime number, false otherwise.
+A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+
+### Example
+```mathematica
+Input: 26
+Output: "1a"
+```
+
+<CodeEditor 
+    initialCode={`
+const isPrime = (myInt) => {\n...\n}`}
+    checkTests={[
+        {
+        call: `
+        isPrime(4)`,
+        expectedResult: false
+        },
+        {
+        call: `
+        isPrime(3)`,
+        expectedResult: true
+        },
+        {
+        call: `
+        isPrime(7)`,
+        expectedResult: true,
+        hidden: true
+        },
+        {
+        call: `
+        isPrime(100)`,
+        expectedResult: false,
+        hidden: true
+        }
+        
+        ]}
+/>
+
+<details>
+<summary>See Solution</summary>
+
+## Solution
+
+### Basic idea
+- A number is prime if it is greater than 1 and has no divisors other than 1 and itself.
+- We can check if a number is prime by iterating from 2 to the square root of the number and checking if the number is divisible by any of these values.
+
+```js
+const isPrime = (myInt) => {
+    if (myInt < 2) return false;
+    for (let i = 2; i <= Math.sqrt(myInt); i++) {
+        if (myInt % i === 0) return false;
+    }
+    return true;
+}
+```
+
+### Algorithm Detailed Explanation
+1. If the input number is less than 2, return false since prime numbers are greater than 1.
+2. Iterate from 2 to the square root of the input number. The square root is used as the upper limit since factors repeat after the square root.
+3. Check if the input number is divisible by any of the values in the range.
+4. If the input number is divisible by any value, return false.
+5. If the input number is not divisible by any value, return true.
+
+
+
+## Complexity Analysis
+The time complexity of this solution is O(sqrt(n)), where n is the input number. 
+This is because we iterate from 2 to the square root of the input number to check for divisors.
+
+## Alternative
+
+```js
+const isPrime = (myInt) => {
+    if (myInt < 2) return false;
+    if (myInt === 2) return true;
+    if (myInt % 2 === 0) return false;
+    for (let i = 3; i <= Math.sqrt(myInt); i += 2) {
+        if (myInt % i === 0) return false;
+    }
+    return true;
+}
+```
+</details>
+
+
