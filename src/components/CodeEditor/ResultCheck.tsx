@@ -41,16 +41,14 @@ export const ResultCheck: FC<ResultCheckProps> = ({ test }) => {
             <FaRegCircleQuestion className='w-7 text-gray-700' />
         )
     }
+    if (testPassed(test)) {
+        return <FaRegCircleCheck className='w-7 text-emerald-700' />
+    }
 
     return (
-        <div>{
-            testPassed(test) ?
-                <FaRegCircleCheck className='w-7 text-emerald-700' /> :
-                <ResultTooltip tooltip={getErrorTooltip(test)}>
-                    <FaRegCircleXmark className='w-7 text-rose-700' />
-                </ResultTooltip>
+        <ResultTooltip tooltip={getErrorTooltip(test)}>
+            <FaRegCircleXmark className='w-7 text-rose-700' />
+        </ResultTooltip>
 
-        }
-        </div>
     )
 }
