@@ -9,7 +9,7 @@ language: "javascript"
 Write a function that merges two sorted arrays into a single sorted array.
 
 <CodeEditor 
-    initialCode={"cons mergeSortedArrays = (array1, array2) => {\n...\n}"}
+    initialCode={"const mergeSortedArrays = (array1, array2) => {\n...\n}"}
     checkTests={[
         {
         call: "mergeSortedArrays([1,2,3], [4,5,6])",
@@ -32,7 +32,7 @@ Write a function that merges two sorted arrays into a single sorted array.
 
 ## Solution
 ```js
-function mergeSortedArrays(array1, array2) {
+const mergeSortedArrays = (array1, array2) => {
     return array1.concat(array2).sort((a, b) => a - b);
 }
 

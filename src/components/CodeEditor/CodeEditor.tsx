@@ -47,6 +47,10 @@ export const CodeEditor: FC<CodeEditorProps> = ({ initialCode, height = "auto", 
                     <button className="border rounded-md h-fit p-2" onClick={handleExecuteCode}>Execute Tests</button>
                 </div>
                 <div className='flex flex-col gap-2'>
+                    <div className="flex gap-2 text-xl font-bold">
+                        <div className='w-1/2'>Function Call:</div>
+                        <div>Expected:</div>
+                    </div>
                     {
                         tests.map((test, index) => {
                             return (

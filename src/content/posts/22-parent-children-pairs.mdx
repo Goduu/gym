@@ -1,0 +1,112 @@
+---
+title: Parent Chilren Pairs 
+description: Return individuals with zero and one known parents from a list of parent-child pairs.
+date: "2024-04-22"
+language: "javascript"
+---
+
+## Question
+Suppose we have some input data describing a graph of relationships between-parents and children over multiple families and generations. The data is formatted as a list of (parent, child) pairs, where each individual is assigned a unique positive integer identifier.
+For example, in this diagram, 3-is a child of 1 and 2, and 5 is-a child of-4:
+```mathematica
+1...2....4................30.
+.\./.../..\................\.
+..3...5....9..15...........16
+...\./.\....\./..............
+....6...7....12..............
+```
+
+Sample input (pseudocode):
+
+```javascript
+[
+  [1, 3], [2, 3], [3, 6], [5, 6], [15, 12],
+  [5, 7], [4, 5], [4, 9], [9, 12], [30, 16]
+];
+```
+
+Write a function that takes this data as input and returns two collections: 
+one containing all individuals with zero known parents, and one containing 
+all individuals with exactly one known parent. The result data should be
+sorted in ascending order.
+
+<CodeEditor 
+    initialCode={`
+const parentChildPairs = (myInput) => {\n...\n}`}
+    checkTests={[
+        {
+        call: `
+        parentChildPairs([[1, 3], [2, 3], [3, 6], [5, 6], [15, 12],
+                        [5, 7], [4, 5], [4, 9], [9, 12], [30, 16]])`,
+        expectedResult: [[1, 2, 4, 15, 30], [5, 7,9, 16]]
+        },
+        {
+        call: `
+        parentChildPairs([[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7]])`,
+        expectedResult: [[1], [2, 3, 4, 5, 6, 7]]
+        },
+        {
+        call: `
+        parentChildPairs([[1, 3], [3, 6], [5, 6], [15, 12],
+                        [5, 7], [4, 5], [4, 9], [9, 12], [30, 16]])`,
+        expectedResult: [[1, 2, 4, 15, 30], [3, 5, 7 , 9, 16]],
+        hidden: true
+        },
+        ]}
+/>
+
+<details>
+<summary>See Solution</summary>
+
+## Solution
+
+### Basic idea
+- We can solve this problem by using a map to store the number of parents for each individual.
+- We can then iterate through the input data to populate the map and identify individuals with zero or one parent.
+- Finally, we can return the individuals with zero and one parent as two separate arrays.
+
+```js
+const parentChildPairs = (myInput) => {
+    const numberOfParents = new Map()
+    const individuals = new Set()
+    for (const [parent, child] of myInput) {
+        individuals.add(parent)
+        individuals.add(child)
+        if (numberOfParents.has(child)) {
+            numberOfParents.set(child, numberOfParents.get(child) + 1)
+        } else {
+            numberOfParents.set(child, 1)
+        }
+    }
+    const zeroParents = []
+    const oneParent = []
+    for (const individual of individuals) {
+        if (numberOfParents.get(individual) === undefined) {
+            zeroParents.push(individual)
+        } else if (numberOfParents.get(individual) === 1) {
+            oneParent.push(individual)
+        }
+    }
+
+    return [zeroParents.sort((a,b) => a - b), oneParent.sort((a,b) => a - b)];
+}
+```
+
+### Algorithm Detailed Explanation
+1. Create a map to store the number of parents for each individual and a set to store all individuals.
+2. Iterate through the input data and populate the map and set.
+3. For each parent-child pair, add the parent and child to the set.
+4. If the child is already in the map, increment the number of parents for that child; otherwise, set the number of parents to 1.
+5. Iterate through the set of individuals and identify individuals with zero or one parent.
+6. Add individuals with zero parents to the zeroParents array and individuals with one parent to the oneParent array.
+7. Return the zeroParents and oneParent arrays, sorted in ascending order.
+
+
+## Complexity Analysis
+The time complexity of this solution is O(n), where n is the number of parent-child pairs in the input data.
+This is because we iterate through the input data once to populate the map and set and then iterate through the set of individuals to identify individuals with zero or one parent.
+
+
+</details>
+
+

@@ -12,8 +12,10 @@ export const CheckTestItem: FC<CheckTestItemProps> = ({ test }) => {
 
   return (
     <div className="flex justify-between gap-2">
-      <code className='w-1/2 truncate'>{hiddenTest ? "Hidden Test" : test.call}</code>
-      <div>Expected: {hiddenTest ? "?" : stringifyVariable(test.expectedResult)}</div>
+      <div className='w-1/2'>
+        {hiddenTest ? "Hidden Test" : test.call}
+      </div>
+      <div> {hiddenTest ? "?" : stringifyVariable(test.expectedResult)}</div>
       <ResultCheck test={test} />
     </div>
   )

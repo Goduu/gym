@@ -4,9 +4,18 @@ import { CheckTest } from './types'
 import { FaRegCircleCheck, FaRegCircleQuestion, FaRegCircleXmark } from '@/components/Icons'
 import { stringifyVariable } from './functions'
 import { ResultTooltip } from './ResultTooltip'
+import { Mdx } from '../MdxComponents'
 
 type ResultCheckProps = {
     test: CheckTest
+}
+
+const formatResult = (result: any) => {
+    if (typeof result === "object") {
+        return JSON.stringify(result)
+    }
+    return result
+
 }
 
 export const ResultCheck: FC<ResultCheckProps> = ({ test }) => {
@@ -19,27 +28,29 @@ export const ResultCheck: FC<ResultCheckProps> = ({ test }) => {
         if (typeof test.result === "object" && "message" in test.result) {
             return test.result.message
         }
-
-        return test.result
+        console.log(test.result)
+        return formatResult(test.result)
     }
 
     const testPassed = (test: CheckTest) => {
         return stringifyVariable(test.result) === stringifyVariable(test.expectedResult)
     }
 
+    if (!test.testRun) {
+        return (
+            <FaRegCircleQuestion className='w-7 text-gray-700' />
+        )
+    }
+
     return (
-        <div>
-            {test.testRun ?
-                testPassed(test) ?
-                    <FaRegCircleCheck className='w-7 text-emerald-700' /> :
-                    <div>
-                        <ResultTooltip tooltip={getErrorTooltip(test)}>
-                            <FaRegCircleXmark className='w-7 text-rose-700' />
-                        </ResultTooltip>
-                    </div>
-                :
-                <FaRegCircleQuestion className='w-7 text-gray-700' />
-            }
+        <div>{
+            testPassed(test) ?
+                <FaRegCircleCheck className='w-7 text-emerald-700' /> :
+                <ResultTooltip tooltip={getErrorTooltip(test)}>
+                    <FaRegCircleXmark className='w-7 text-rose-700' />
+                </ResultTooltip>
+
+        }
         </div>
     )
 }
