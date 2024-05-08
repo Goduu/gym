@@ -1,0 +1,91 @@
+---
+title: Find common characthers 
+description: Give two lists of characters, find the common characters between them.
+date: "2024-03-29"
+language: "javascript"
+---
+
+## Question
+Given two lists of characters, find the common characters between them.
+### Example
+for the lists:  and ["b", "c", "c", "d"], the common characters are ["b", "c", "c"].
+
+```mathematica
+Lists: ["a", "b", "c", "c"] and ["b", "c", "c", "d"]
+Result: ["b", "c", "c"]
+```
+
+<CodeEditor 
+    initialCode={`
+const commonChars = (array1, array2) => {\n...\n}`}
+    checkTests={[
+        {
+        call: `
+        commonChars(["a","b","c","d"], ["a","b","c"])`,
+        expectedResult: ["a", "b", "c"]
+        },
+        {
+        call: `
+        commonChars(["a", "b", "c", "c"], ["a", "c", "c", "d"])`,
+        expectedResult: ["a", "c", "c"]
+        },
+        {
+        call: `
+        commonChars([], ["a", "b", "c", "c"])`,
+        expectedResult: [],
+        hidden: true
+        },
+        {
+        call: `
+        commonChars(["a", "a", "a"], ["a"])`,
+        expectedResult: ["a"],
+        hidden: true
+        }
+        
+        ]}
+/>
+
+<details>
+<summary>See Solution</summary>
+
+## Solution
+
+### Basic idea
+- We can use a hash map to store the frequency of characters in the first list.
+- Then, we can iterate through the second list and check if the character is present in the hash map.
+- If the character is present, we can decrement the frequency in the hash map and add the character to the result array.
+
+
+```js
+const commonChars = (array1, array2) => {
+    const freqMap = new Map();
+    const result = [];
+
+    for (const char of array1) {
+        freqMap.set(char, (freqMap.get(char) || 0) + 1);
+    }
+
+    for (const char of array2) {
+        if (freqMap.has(char) && freqMap.get(char) > 0) {
+            result.push(char);
+            freqMap.set(char, freqMap.get(char) - 1);
+        }
+    }
+
+    return result;
+};
+```
+
+### Algorithm Detailed Explanation
+1. Create a hash map to store the frequency of characters in the first list.
+2. Iterate through the first list and populate the hash map with the frequency of each character.
+3. Iterate through the second list and check if the character is present in the hash map and has a frequency greater than 0.
+4. If the character is present and has a frequency greater than 0, add the character to the result array and decrement the frequency in the hash map.
+5. Return the result array containing the common characters between the two lists.
+
+## Complexity Analysis
+The time complexity of this solution is O(n), where n is the total number of characters in both lists.
+
+</details>
+
+
