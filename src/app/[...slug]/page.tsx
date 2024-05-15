@@ -50,8 +50,8 @@ export default async function PagePage({ params }: PageProps) {
   }
 
   return (
-    <article className="py-6">
-      <h1>{page.title}</h1>
+    <article className="flex flex-col py-6 gap-4">
+      <h1 className="text-3xl">{page.title}</h1>
       {page.description && <p className="text-xl">{page.description}</p>}
       <hr />
       <Mdx code={page.body.code} />

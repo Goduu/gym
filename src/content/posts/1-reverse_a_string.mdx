@@ -12,21 +12,21 @@ Write a function that takes a string as input and returns the string reversed.
     initialCode={"const reverseString = (str) => {\n...\n}"}
     checkTests={[
         {
-        call: "reverseString('hello')",
-        expectedResult: 'olleh'
+            call: "reverseString('hello')",
+            expectedResult: 'olleh'
         },
         {
-        call: "reverseString('w0rld')",
-        expectedResult: 'dlr0w'
-        },
-        {
-        call: "reverseString('1q2w3e4raysxdcfv')",
-        expectedResult: 'vfcdxsyar4e3w2q1',
-        hidden: true
+            call: "reverseString('w0rld')",
+            expectedResult: 'dlr0w'
         },
         {
             call: "reverseString('')",
             expectedResult: ''
+        },
+        {
+            call: "reverseString('1q2w3e4raysxdcfv')",
+            expectedResult: 'vfcdxsyar4e3w2q1',
+            hidden: true
         },
         {
             call: "reverseString('a')",
