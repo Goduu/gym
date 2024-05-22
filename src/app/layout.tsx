@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@/components/analytics"
 import { ModeToggle } from "@/components/mode-toggle"
+import { FaSquareGithub } from "@/components/Icons"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -30,6 +31,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
                   <Link href="/">Home</Link>
                   <Link href="/about">About</Link>
                 </nav>
+                <Link href="https://github.com/Goduu/gym" target="_blank" >
+                  <FaSquareGithub className="w-7 h-7" />
+                </Link>
                 <ModeToggle />
               </div>
             </header>
