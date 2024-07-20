@@ -5,6 +5,7 @@ import { FC, useCallback, useRef, useState } from 'react';
 import { CheckTest } from './types';
 import { CheckTestItem } from './CheckTestItem';
 import { useTheme } from "next-themes"
+import { Button } from '../Button';
 
 
 export type CodeEditorProps = {
@@ -44,7 +45,7 @@ export const CodeEditor: FC<CodeEditorProps> = ({ initialCode, height = "auto", 
                     <h2>
                         Tests
                     </h2>
-                    <button className="border rounded-md h-fit p-2" onClick={handleExecuteCode}>Execute Tests</button>
+                    <Button handleClick={handleExecuteCode}>Execute Tests</Button>
                 </div>
                 <div className='flex flex-col gap-2'>
                     <div className="flex gap-2 text-xl font-bold">

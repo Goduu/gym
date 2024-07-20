@@ -3,6 +3,7 @@ import { allPosts } from "@contentlayer/generated"
 
 import { Metadata } from "next"
 import { Mdx } from "@/components/MdxComponents"
+import { ImprovmentArea } from "@/components/CodeEditor/ImprovmentArea"
 
 interface PostProps {
   params: {
@@ -59,6 +60,7 @@ export default async function PostPage({ params }: PostProps) {
       )}
       <hr className="my-4" />
       <Mdx code={post.body.code} />
+      <ImprovmentArea pageTitle={post.title}/>
     </article>
   )
 }
