@@ -2,15 +2,15 @@
 import React, { FC } from 'react'
 import { Button } from '../Button'
 
-type ImprovmentAreaProps = {
+type ImprovementAreaProps = {
     pageTitle: string,
 }
 
-export const ImprovmentArea: FC<ImprovmentAreaProps> = ({pageTitle}) => {
+export const ImprovementArea: FC<ImprovementAreaProps> = ({pageTitle}) => {
 
     const owner = "Goduu"
     const repo = "gym"
-    const title = `Improvment idea for ${pageTitle}`
+    const title = `Improvement idea for ${pageTitle}`
     const body = 
 `I have an idea to improve ${pageTitle} \n
 - [ ] The answer is incorrect
@@ -28,9 +28,9 @@ export const ImprovmentArea: FC<ImprovmentAreaProps> = ({pageTitle}) => {
     return (
         <div className="flex flex-col pt-10 gap-4 items-center">
             <div>
-                Any improvment idea? Share with us!
+                Any improvement idea? Share with us!
             </div>
-            <Button handleClick={handleClick}>Improve this exercice</Button>
+            <Button handleClick={handleClick}>Improve this exercise</Button>
         </div>
     )
 }
