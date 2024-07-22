@@ -6,9 +6,14 @@ language: "javascript"
 ---
 
 ## Question
+Implement a function that sorts an array using the quick sort algorithm.
+
+### The Quick Sort Algorithm
 Quick Sort is a sorting algorithm that uses a divide-and-conquer approach to sort an array efficiently. 
 The algorithm works by selecting a pivot element from the array and partitioning the other elements into two sub-arrays according to whether they are less than or greater than the pivot. 
 The sub-arrays are then recursively sorted.
+
+Ps. The tests don't check if the quick sort algorithm is implemented correctly, but if the array is sorted correctly.
 
 <CodeEditor 
     initialCode={"const quickSort = (myArray) => {\n...\n}"}
@@ -38,6 +43,31 @@ The sub-arrays are then recursively sorted.
   <summary>See Solution</summary>
 
 ## Solution
+
+```js
+const quickSort = (myArray) => {
+ 
+ if(myArray.length <= 1){
+    return myArray
+  }
+  
+  const pivot = myArray[0]
+  
+  const left = []
+  const right = []
+  
+for (let i = 1; i < myArray.length; i++) {
+    if(item < pivot){
+      left.push(item)
+    } else {
+      right.push(item)
+    }
+  }
+  return [...quickSort(left), pivot, ...quickSort(right)]
+  
+  
+}
+```
 
 ```js
 const quickSort = (arr) => {
