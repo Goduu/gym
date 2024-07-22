@@ -6,7 +6,7 @@ language: "javascript"
 ---
 
 ## Question
-Given an integer, convert it to a hexadecimal representation. For negative integers, two's complement representation should be used.
+Given an integer, convert it to a hexadecimal representation.
 
 ### Example
 ```mathematica
@@ -33,6 +33,12 @@ const intToHex = (myInt) => {\n...\n}`}
         intToHex(152)`,
         expectedResult: "98",
         hidden: true
+        },
+        {
+        call: `
+        intToHex(0)`,
+        expectedResult: "0",
+        hidden: true
         }
         
         ]}
@@ -43,7 +49,9 @@ const intToHex = (myInt) => {\n...\n}`}
 
 ## Solution
 
-### Basic idea
+### Loping through the number
+
+#### Basic idea
 - We can convert a number to hexadecimal by repeatedly dividing the number by 16 and keeping track of the remainders.
 - For negative numbers, we can use two's complement representation to convert them to positive numbers before converting them to hexadecimal.
 
@@ -63,7 +71,7 @@ const intToHex = (myInt) => {
 }
 ```
 
-### Algorithm Detailed Explanation
+#### Algorithm Detailed Explanation
 1. If the input number is 0, return "0".
 2. If the input number is negative, convert it to a positive number using two's complement representation.
 3. Initialize an empty string `hex` to store the hexadecimal representation of the number.
@@ -75,21 +83,25 @@ const intToHex = (myInt) => {
 5. Return the `hex` string as the hexadecimal representation of the input number.
 
 
-## Complexity Analysis
+#### Complexity Analysis
 - The time complexity of this solution is O(log(n)), where n is the input number.
 - The space complexity is O(log(n)) as well, due to the space used to store the hexadecimal representation.
 
-## Alternative
+### Built-in Method
 
 ```js
 const intToHex = (myInt) => {
-    if (myInt === 0) return "0";
-    if (myInt < 0) {
-        myInt = 0xFFFFFFFF + myInt + 1;
-    }
     return myInt.toString(16);
 }
 ```
+#### Basic idea
+- JavaScript provides a built-in method `toString` that can be used to convert a number to a string in a specified base.
+- We can use this method with a base of 16 to convert a number to its hexadecimal representation.
+
+#### Complexity Analysis
+- The time complexity of this solution is O(1) since it uses a built-in method.
+- The space complexity is O(1) as well.
+
 </details>
 
 
