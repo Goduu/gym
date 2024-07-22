@@ -9,12 +9,6 @@ language: "javascript"
 Given an integer, return true if it's a prime number, false otherwise.
 A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.
 
-### Example
-```mathematica
-Input: 26
-Output: "1a"
-```
-
 <CodeEditor 
     initialCode={`
 const isPrime = (myInt) => {\n...\n}`}
@@ -53,6 +47,7 @@ const isPrime = (myInt) => {\n...\n}`}
 ### Basic idea
 - A number is prime if it is greater than 1 and has no divisors other than 1 and itself.
 - We can check if a number is prime by iterating from 2 to the square root of the number and checking if the number is divisible by any of these values.
+- The square root is used as the upper limit since factors repeat after the square root.
 
 ```js
 const isPrime = (myInt) => {
@@ -76,20 +71,8 @@ const isPrime = (myInt) => {
 ## Complexity Analysis
 The time complexity of this solution is O(sqrt(n)), where n is the input number. 
 This is because we iterate from 2 to the square root of the input number to check for divisors.
+The space complexity is O(1) since we use a constant amount of extra space.
 
-## Alternative
-
-```js
-const isPrime = (myInt) => {
-    if (myInt < 2) return false;
-    if (myInt === 2) return true;
-    if (myInt % 2 === 0) return false;
-    for (let i = 3; i <= Math.sqrt(myInt); i += 2) {
-        if (myInt % i === 0) return false;
-    }
-    return true;
-}
-```
 </details>
 
 
