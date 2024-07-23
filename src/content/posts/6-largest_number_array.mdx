@@ -6,7 +6,7 @@ language: "javascript"
 ---
 
 ## Question
-Write a function that finds the largest number in an array.
+Write a function that receives an array of numbers and returns the largest number in it.
 
 
 <CodeEditor 
@@ -43,6 +43,7 @@ Write a function that finds the largest number in an array.
 <details>
   <summary>See Solution</summary>
 
+## Math library
 ```ts
 const findLargest = (myArray) => {
    if(myArray.length === 0) return undefined
@@ -57,7 +58,7 @@ The spread operator is used to pass the elements of the array as arguments to th
 ## Complexity Analysis
 The time complexity for this solution is O(n) where n is the number of elements in the array.
 
-## Alternative
+## For loop
 ### For loop
 ```ts
 const findLargest = (myArray) => {
@@ -72,7 +73,7 @@ const findLargest = (myArray) => {
 }
 ```
 
-### Lodash
+## Lodash
 ```ts
 import {max} from lodash
 
@@ -81,7 +82,7 @@ const findLargest = (myArray) => {
 }
 ```
 
-### With sorting
+### Array sorting
 ```ts
 const findLargest = (myArray) => {
    return myArray.sort((a,b) => b - a)[0]
