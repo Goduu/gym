@@ -4,6 +4,7 @@ import { allPosts } from "@contentlayer/generated"
 import { Metadata } from "next"
 import { Mdx } from "@/components/MdxComponents"
 import { ImprovementArea } from "@/components/CodeEditor/ImprovementArea"
+import { Rating } from "@/components/Rating/Rating"
 
 interface PostProps {
   params: {
@@ -58,6 +59,7 @@ export default async function PostPage({ params }: PostProps) {
           {post.description}
         </p>
       )}
+      <Rating ratingId={post._id}/>
       <hr className="my-4" />
       <Mdx code={post.body.code} />
       <ImprovementArea pageTitle={post.title}/>

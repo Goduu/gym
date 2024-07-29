@@ -1,18 +1,18 @@
 "use client"
-import React, { FC } from 'react'
+import React, { FC, Suspense, useId } from 'react'
 import { Button } from '../Button'
 
 type ImprovementAreaProps = {
     pageTitle: string,
 }
 
-export const ImprovementArea: FC<ImprovementAreaProps> = ({pageTitle}) => {
+export const ImprovementArea: FC<ImprovementAreaProps> = ({ pageTitle }) => {
 
     const owner = "Goduu"
     const repo = "gym"
     const title = `Improvement idea for ${pageTitle}`
-    const body = 
-`I have an idea to improve ${pageTitle} \n
+    const body =
+        `I have an idea to improve ${pageTitle} \n
 - [ ] The answer is incorrect
 - [ ] Better answer idea
 - [ ] Other`
@@ -23,7 +23,7 @@ export const ImprovementArea: FC<ImprovementAreaProps> = ({pageTitle}) => {
     const handleClick = () => {
         window.open(baseURL, "_blank")
     }
-   
+
 
     return (
         <div className="flex flex-col pt-10 gap-4 items-center">
