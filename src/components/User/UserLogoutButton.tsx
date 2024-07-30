@@ -12,7 +12,7 @@ export const UserLogoutButton: FC = async () => {
     return (
         <Tooltip text='Logout' disabled={!user}>
             <ServerButton handleClick={singOutAsync} disabled={!user} className={`transition ease-in-out delay-150 hover:scale-110 duration-150 ${user ? "opacity-100" : "opacity-0"}`}>
-                <TbLogout2 className="w-4" />
+                <TbLogout2 className="w-6 h-6" />
             </ServerButton>
         </Tooltip>
     )

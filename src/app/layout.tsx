@@ -5,6 +5,7 @@ import { Analytics } from "@/components/analytics"
 import { Header } from "@/components/Header/Header"
 import { SessionProvider } from "next-auth/react"
 import { ReactNode } from "react"
+import { Footer } from "@/components/Header/Footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,11 +21,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <SessionProvider >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="max-w-4xl mx-auto py-10 px-4 justify-center">
-              <Header />
+            <Header />
+            <div className="flex flex-col py-10 px-4 place-items-center">
               <main>{children}</main>
             </div>
             <Analytics />
+            <Footer />
           </ThemeProvider>
         </SessionProvider>
       </body>

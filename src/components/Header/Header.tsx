@@ -1,22 +1,15 @@
 import Link from 'next/link'
 import React from 'react'
-import { FaSquareGithub } from '../Icons'
-import { ModeToggle } from '../ModeToggle'
 import { User } from '../User/User'
+import { Jyms } from '../Icons'
 
 export const Header = () => {
     return (
-        <header>
-            <div className="flex items-center gap-6">
-                <nav className="ml-auto text-sm font-medium space-x-6">
-                    <Link href="/">Home</Link>
-                </nav>
-                <Link href="https://github.com/Goduu/gym" target="_blank" >
-                    <FaSquareGithub className="w-7 h-7" />
-                </Link>
-                <ModeToggle />
-                <User />
-            </div>
+        <header className='py-7'>
+            <Link href="/">
+                <Jyms className="h-20 mb-10 drop-shadow-lg dark:drop-shadow-[0_10px_8px_rgba(255,255,255,0.1)]" />
+            </Link>
+            <User />
         </header>
     )
 }
