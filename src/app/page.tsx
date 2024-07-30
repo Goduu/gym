@@ -9,11 +9,12 @@ export default function Home() {
       {
         allPosts.map((post) => (
           <article key={post._id}>
-            <Link href={post.slug}>
-              <h2 className="flex items-center gap-4">{post.title}
-                <Rating ratingId={post._id} disabled />
-              </h2>
-            </Link>
+            <h2 className="flex items-center gap-4 justify-between">
+              <Link href={post.slug}>
+                {post.title}
+              </Link>
+              <Rating ratingId={post._id} disabled />
+            </h2>
             {post.description && <p>{post.description}</p>}
           </article>
         ))
