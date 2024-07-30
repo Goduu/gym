@@ -1,5 +1,5 @@
 {
-  "name": "next-contentlayer",
+  "name": "gym",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -24,7 +24,7 @@
     "eslint-config-next": "13.3.1",
     "next": "^15.0.0-rc.0",
     "next-auth": "^5.0.0-beta.20",
-    "next-contentlayer": "^0.3.2",
+    "next-contentlayer": "^0.3.4",
     "next-themes": "^0.2.1",
     "postcss": "8.4.23",
     "react": "19.0.0-rc-941e1b4a-20240729",

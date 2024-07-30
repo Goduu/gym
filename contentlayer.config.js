@@ -8,25 +8,9 @@ const computedFields = {
   },
   slugAsParams: {
     type: "string",
-    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    resolve: (doc) => doc?._raw.flattenedPath?.split("/")?.slice(1)?.join("/") || "",
   },
 };
-
-export const Page = defineDocumentType(() => ({
-  name: "Page",
-  filePathPattern: `pages/**/*.mdx`,
-  contentType: "mdx",
-  fields: {
-    title: {
-      type: "string",
-      required: true,
-    },
-    description: {
-      type: "string",
-    },
-  },
-  computedFields,
-}));
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -40,9 +24,6 @@ export const Post = defineDocumentType(() => ({
     description: {
       type: "string",
     },
-    language: {
-      type: "string",
-    },
     date: {
       type: "date",
       required: true,
@@ -53,5 +34,5 @@ export const Post = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "./src/content",
-  documentTypes: [Post, Page],
+  documentTypes: [Post],
 });

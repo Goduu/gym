@@ -1,10 +1,11 @@
 "use client"
-import Image from "next/image"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { CodeEditor } from "@/components/CodeEditor/CodeEditor"
 import { FC } from "react"
-const components = {
-  Image,
+import { MDXComponents } from "@mdx-js/react/lib"
+
+
+const components: MDXComponents = {
   CodeEditor
 }
 
@@ -13,7 +14,7 @@ interface MdxProps {
 }
 
 export const Mdx: FC<MdxProps> = ({ code }) => {
-  const Component = useMDXComponent(code)
+  const MDXContent = useMDXComponent(code)
 
-  return <Component components={components} />
+  return <MDXContent components={{CodeEditor}} />
 }

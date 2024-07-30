@@ -14,7 +14,7 @@ export type CodeEditorProps = {
     checkTests: CheckTest[]
 }
 
-export const CodeEditor: FC<CodeEditorProps> = ({ initialCode, height = "auto", checkTests = [] }) => {
+export function CodeEditor({ initialCode, height = "auto", checkTests = [] }: CodeEditorProps) {
     const [code, setCode] = useState(initialCode);
     const [tests, setTests] = useState<CheckTest[]>(checkTests);
     const editorRef = useRef(null);

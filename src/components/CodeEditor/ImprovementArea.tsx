@@ -1,5 +1,5 @@
 "use client"
-import React, { FC, Suspense, useId } from 'react'
+import React, { FC } from 'react'
 import { Button } from '../Button'
 
 type ImprovementAreaProps = {

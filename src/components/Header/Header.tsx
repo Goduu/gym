@@ -10,7 +10,6 @@ export const Header = () => {
             <div className="flex items-center gap-6">
                 <nav className="ml-auto text-sm font-medium space-x-6">
                     <Link href="/">Home</Link>
-                    <Link href="/about">About</Link>
                 </nav>
                 <Link href="https://github.com/Goduu/gym" target="_blank" >
                     <FaSquareGithub className="w-7 h-7" />

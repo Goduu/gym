@@ -1,4 +1,3 @@
-"use client"
 import React, { FC } from 'react'
 import { CheckTest } from './types'
 import { FaRegCircleCheck, FaRegCircleQuestion, FaRegCircleXmark } from '@/components/Icons'
