@@ -1,7 +1,7 @@
 "use client"
 
 import { useTheme } from "next-themes"
-import { FaRegMoon, FaRegSun } from "./Icons"
+import { FaRegMoon, LuSun } from "./Icons"
 
 export function ModeToggle() {
   const { setTheme, theme } = useTheme()
@@ -12,7 +12,7 @@ export function ModeToggle() {
       className="border rounded-md w-7 h-7 flex items-center justify-center">
       <span className="sr-only">Toggle mode</span>
       {theme !== "dark" ? (
-        <FaRegSun className="w-5 h-5" />
+        <LuSun className="w-5 h-5" />
       ) : (
         <FaRegMoon className="w-5 h-5" />
       )}
