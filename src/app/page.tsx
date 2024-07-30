@@ -2,7 +2,6 @@
 import { Gym } from "@/components/Icons"
 import { Rating } from "@/components/Rating/Rating"
 import { allPosts } from "@contentlayer/generated"
-import Image from "next/image"
 import Link from "next/link"
 
 export default function Home() {
