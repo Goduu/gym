@@ -7,11 +7,14 @@
     "build": "next build",
     "preview": "next build && next start",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate": "node src/scripts/migration.ts"
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.2",
     "@mdx-js/react": "^3.0.1",
+    "@supabase/ssr": "^0.4.0",
+    "@supabase/supabase-js": "^2.45.0",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "20.11.6",
     "@types/react": "npm:types-react@rc",
@@ -20,6 +23,7 @@
     "@vercel/analytics": "^1.0.0",
     "autoprefixer": "10.4.14",
     "contentlayer": "^0.3.2",
+    "dotenv": "^16.4.5",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
     "next": "^15.0.0-rc.0",
@@ -35,5 +39,8 @@
   "overrides": {
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react-dom@rc"
+  },
+  "devDependencies": {
+    "supabase": "^1.187.10"
   }
 }

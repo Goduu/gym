@@ -2,12 +2,11 @@ import React, { FC } from 'react'
 import { Button } from '../Button'
 import Link from 'next/link'
 import { FaRegUser } from '../Icons'
-import { auth } from 'src/lib/auth'
 import { Tooltip } from '../Tooltip'
+import { userMetadata } from 'src/lib/auth'
 
 export const UserLoginButton: FC = async () => {
-    let session = await auth();
-    let user = session?.user;
+    let user = await userMetadata()
 
     if (user) {
         return (

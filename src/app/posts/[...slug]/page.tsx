@@ -59,7 +59,7 @@ export default async function PostPage({ params }: PostProps) {
           {post.description}
         </p>
       )}
-      <Rating ratingId={post._id}/>
+      <Rating activityId={post.id}/>
       <hr className="my-4" />
       <Mdx code={post.body.code} />
       <ImprovementArea pageTitle={post.title}/>

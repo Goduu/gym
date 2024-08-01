@@ -2,5 +2,9 @@
     "cSpell.enableFiletypes": [
         "markdown-math",
         "mdx"
+    ],
+    "cSpell.words": [
+        "contentlayer",
+        "supabase"
     ]
 }

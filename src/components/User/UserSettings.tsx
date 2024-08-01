@@ -2,12 +2,11 @@ import React, { FC } from 'react'
 import { Button } from '../Button'
 import Link from 'next/link'
 import { IoSettingsOutline } from '../Icons'
-import { auth } from 'src/lib/auth'
+import { userMetadata } from 'src/lib/auth'
 import { Tooltip } from '../Tooltip'
 
 export const UserSettings: FC = async () => {
-    let session = await auth();
-    let user = session?.user;
+    let user = await userMetadata()
 
     const disabled = !user
 

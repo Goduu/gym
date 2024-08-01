@@ -1,13 +1,12 @@
-import { auth } from "src/lib/auth";
 import { allPosts } from "@contentlayer/generated"
 import { redirect } from "next/navigation";
+import { userMetadata } from "src/lib/auth";
 
 export default async function User() {
-
-    const session = await auth()
+    let user = await userMetadata()
     const posts = await allPosts
 
-    if(!session) {
+    if(!user) {
         redirect("/")
     }
 
@@ -16,12 +15,12 @@ export default async function User() {
             <div className="flex justify-center pt-10">
                 <div className="flex flex-col gap-4 justify-items-center">
                     <div className="flex gap-4 items-center justify-center">
-                        <img className="rounded-full" src={session?.user?.image || ""} width={100} height={100} alt="user avatar" />
+                        <img className="rounded-full" src={user.avatarUrl} width={100} height={100} alt="user avatar" />
                     </div>
                     <div className="text-2xl justify-center">
-                        <div className="text-center">{session?.user?.name}</div>
+                        <div className="text-center">{user.name}</div>
                     </div>
-                    <div className="text-lg text-center">{session?.user?.email}</div>
+                    <div className="text-lg text-center">{user.email}</div>
                 </div>
             </div>
             <hr className="text-center" />

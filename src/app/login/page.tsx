@@ -1,5 +1,5 @@
 import { ServerButton } from "@/components/ServerButton"
-import { signInAsync } from "src/lib/login-utils"
+import { signInWithGithub } from "src/lib/auth"
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
         <div className="text-xl">
           Sign in to save your progress and rate the exercises you&apos;ve completed.
         </div>
-        <ServerButton handleClick={signInAsync}>
+        <ServerButton handleClick={signInWithGithub}>
           Sign in with GitHub
         </ServerButton>
       </div>

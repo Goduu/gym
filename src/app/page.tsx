@@ -1,9 +1,8 @@
-"use client"
 import { Rating } from "@/components/Rating/Rating"
 import { allPosts } from "@contentlayer/generated"
 import Link from "next/link"
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className="prose dark:prose-invert justify-center items-center w-full">
       {
@@ -13,7 +12,7 @@ export default function Home() {
               <Link href={post.slug}>
                 {post.title}
               </Link>
-              <Rating ratingId={post._id} disabled />
+              <Rating activityId={post.id} disabled />
             </h2>
             {post.description && <p>{post.description}</p>}
           </article>
