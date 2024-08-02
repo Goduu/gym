@@ -1,4 +1,4 @@
-import { ServerButton } from "@/components/ServerButton"
+import { Button } from "@/components/Button"
 import { signInWithGithub } from "src/lib/auth"
 
 export default function Home() {
@@ -8,9 +8,9 @@ export default function Home() {
         <div className="text-xl">
           Sign in to save your progress and rate the exercises you&apos;ve completed.
         </div>
-        <ServerButton handleClick={signInWithGithub}>
+        <Button handleClick={signInWithGithub}>
           Sign in with GitHub
-        </ServerButton>
+        </Button>
       </div>
     </div>
   )

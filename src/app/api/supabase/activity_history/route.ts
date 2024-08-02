@@ -1,5 +1,5 @@
 
-export default async function POST(req, res) {
+export async function POST(req, res) {
     if (req.method === 'POST') {
         const { user_id, activity_id, successful_tests } = await req.json();
 

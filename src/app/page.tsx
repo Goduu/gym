@@ -1,4 +1,4 @@
-import { Rating } from "@/components/Rating/Rating"
+import { Difficulty } from "@/components/Difficulty/Difficulty"
 import { allPosts } from "@contentlayer/generated"
 import Link from "next/link"
 
@@ -8,11 +8,11 @@ export default async function Home() {
       {
         allPosts.map((post) => (
           <article key={post._id}>
-            <h2 className="flex items-center gap-4 justify-between">
+            <h2 className="flex items-center gap-4 ">
               <Link href={post.slug}>
                 {post.title}
               </Link>
-              <Rating activityId={post.id} disabled />
+              <Difficulty rating={Math.random()*10} />
             </h2>
             {post.description && <p>{post.description}</p>}
           </article>

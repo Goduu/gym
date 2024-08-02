@@ -16,7 +16,7 @@ export const Tooltip: FC<TooltipProps> = ({ children, text, disabled }) => {
                     flex absolute justify-center
                     transition duration-150 delay-150 ease-in-out`}>
                 <span
-                    className="flex rounded-xl border dark:backdrop-blur-2xl p-1 -pt-10 -pl-10 shadow-lg"
+                    className="text-gray-800 bg-gray-200 font-bold p-1 mt-1 rounded transition-colors duration-300"
                 >
                     {!disabled && text}
                 </span>
