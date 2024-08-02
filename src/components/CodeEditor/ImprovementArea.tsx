@@ -20,17 +20,16 @@ export const ImprovementArea: FC<ImprovementAreaProps> = ({ pageTitle }) => {
     const encodedBody = encodeURIComponent(body)
     const baseURL = `https://github.com/${owner}/${repo}/issues/new?title=${title}&body=${encodedBody}`
 
-    const handleClick = () => {
-        window.open(baseURL, "_blank")
-    }
-
-
     return (
         <div className="flex flex-col pt-10 gap-4 items-center">
             <div>
                 Any improvement idea? Share with us!
             </div>
-            <Button handleClick={handleClick}>Improve this exercise</Button>
+            <Button >
+                <a href={baseURL} target='_blank' className='text-inherit'>
+                    Improve this exercise
+                </a>
+            </Button>
         </div>
     )
 }

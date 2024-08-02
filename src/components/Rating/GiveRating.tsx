@@ -10,7 +10,7 @@ type GiveRatingProps = {
 export const GiveRating: FC<GiveRatingProps> = ({ activityId }) => {
     const [enableRating, setEnableRating] = useState(false)
     const [newRating, setNewRating] = useState(5)
-    const rating = (Math.random() * 10).toFixed(1)
+    const rating = 5.1
 
     const confirmRating = () => {
         fetch(`/api/supabase/rating`, {

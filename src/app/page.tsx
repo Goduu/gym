@@ -12,7 +12,7 @@ export default async function Home() {
               <Link href={post.slug}>
                 {post.title}
               </Link>
-              <Difficulty rating={Math.random()*10} />
+              <Difficulty rating={5} />
             </h2>
             {post.description && <p>{post.description}</p>}
           </article>

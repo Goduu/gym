@@ -11,11 +11,19 @@ type ButtonProps = {
     handleClick?: () => void
 }
 
+// USing a form instead of a onClick for the button allows to pass some server function to the handleClick
 export const Button: FC<ButtonProps> = ({ children, className, disabled, size, color = "primary", handleClick }) => {
 
+    const handleClicks = () => {
+        if (disabled) return
+        handleClick?.()
+    }
+
     return (
-        <button className={`transition ease-in-out delay-150 hover:scale-105 duration-150 border font-bold hover:shadow-sm rounded-md h-fit p-2 ${size === "small" && "p-[3px] text-xs"} ${disabled && "cursor-default"}  ${color === "primary" && "bg-indigo-500 text-gray-50"} ${className}`} onClick={handleClick}>
-            {children}
-        </button>
+        <form action={handleClicks}>
+            <button type="submit" className={`transition ease-in-out delay-150 hover:scale-105 duration-150 border font-bold hover:shadow-sm rounded-md h-fit p-2 ${size === "small" && "p-[3px] text-xs"} ${disabled && "cursor-default"}  ${color === "primary" && "bg-indigo-500 text-gray-50"} ${className}`} onClick={handleClick}>
+                {children}
+            </button>
+        </form>
     )
 }
