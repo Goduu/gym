@@ -7,8 +7,8 @@ type DifficultyProps = {
 
 export const Difficulty: FC<DifficultyProps> = ({ rating}) => {
 
-    const difficulty = rating < 3.3 ? "Begginer" : rating < 6.6 ? "Intermediary" : "Advanced"
-    const chipColor = difficulty === "Begginer" ? "green" : difficulty === "Intermediary" ? "amber" : "red"
+    const difficulty = rating < 3.3 ? "Beginner" : rating < 6.6 ? "Intermediary" : "Advanced"
+    const chipColor = difficulty === "Beginner" ? "green" : difficulty === "Intermediary" ? "amber" : "red"
 
     return (
         <div className="group relative flex cursor-pointer after:shadow-lg after:shadow-black text-sm font-semibold">
