@@ -1,8 +1,12 @@
 import { Difficulty } from "@/components/Difficulty/Difficulty"
 import { allPosts } from "@contentlayer/generated"
 import Link from "next/link"
+import { fetchRatingByActivityId } from "src/api-functions/fetchRatingByActivityId"
 
 export default async function Home() {
+  const ratings = await fetchRatingByActivityId()
+  const getRating = (id) => ratings?.[id] ?? 5
+
   return (
     <div className="prose dark:prose-invert justify-center items-center w-full">
       {
@@ -12,7 +16,7 @@ export default async function Home() {
               <Link href={post.slug}>
                 {post.title}
               </Link>
-              <Difficulty rating={5} />
+              <Difficulty rating={getRating(post.id)} />
             </h2>
             {post.description && <p>{post.description}</p>}
           </article>

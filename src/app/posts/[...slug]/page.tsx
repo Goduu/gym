@@ -5,6 +5,7 @@ import { Metadata } from "next"
 import { Mdx } from "@/components/MdxComponents"
 import { ImprovementArea } from "@/components/CodeEditor/ImprovementArea"
 import { GiveRating } from "@/components/Rating/GiveRating"
+import { userMetadata } from "src/lib/auth"
 
 interface PostProps {
   params: {
@@ -46,6 +47,7 @@ export async function generateStaticParams(): Promise<PostProps["params"][]> {
 
 export default async function PostPage({ params }: PostProps) {
   const post = await getPostFromParams(params)
+  const userData = await userMetadata()
 
   if (!post) {
     notFound()
@@ -59,7 +61,7 @@ export default async function PostPage({ params }: PostProps) {
           {post.description}
         </p>
       )}
-      <GiveRating activityId={post.id} />
+      <GiveRating activityId={post.id} userId={userData?.id} />
       <hr className="my-4" />
       <Mdx code={post.body.code} />
       <ImprovementArea pageTitle={post.title} />

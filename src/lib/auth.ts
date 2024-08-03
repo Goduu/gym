@@ -25,6 +25,12 @@ export async function signOut() {
 }
 
 
+export type User = {
+  id: string
+  name: string
+  email?: string
+  avatarUrl: string
+}
 
 export const userMetadata = async () => {
   const supabase = createClient();
@@ -34,10 +40,12 @@ export const userMetadata = async () => {
     return null
   }
 
-  return {
-    id: metadata.id,
+  const userData: User = {
+    id: metadata.provider_id,
     name: metadata?.full_name || metadata.name,
-    email: session.data.user?.email,
-    avatarUrl: metadata?.avatar_url,
+    email: session.data.user?.email || metadata.email,
+    avatarUrl: metadata.avatar_url,
   }
+
+  return userData
 }

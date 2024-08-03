@@ -6,7 +6,7 @@ export async function POST(req, res) {
     const { user_id, activity_id, rating } = await req.json();
 
     const { data, error } = await supabase
-        .from('ratings')
+        .from('rating')
         .upsert([{ user_id, activity_id, rating }]);
 
     if (error) {
@@ -24,7 +24,7 @@ export async function DELETE(req, res) {
     const { id } = req.body;
 
     const { data, error } = await supabase
-        .from('ratings')
+        .from('rating')
         .delete()
         .eq('id', id);
 
@@ -37,25 +37,24 @@ export async function DELETE(req, res) {
 
 
 export async function GET(req, res) {
-    const { user_id } = req.query;
-
+    const supabase = createClient();
     const { data, error } = await supabase
-        .from('ratings')
-        .select('*')
-
-
+        .rpc('get_activity_ratings')
+    console.log("data", data)
     if (error) {
-        return res.status(500).json({ error: error.message });
+        console.error('Error fetching activity ratings:', error)
+        return null
     }
 
-    return res.status(200).json(data);
+    return Response.json({ data })
+
 }
 
 export async function PUT(req, res) {
     const { id, rating } = req.body;
 
     const { data, error } = await supabase
-        .from('ratings')
+        .from('rating')
         .update({ rating })
         .eq('id', id);
 

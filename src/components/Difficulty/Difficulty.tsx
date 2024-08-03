@@ -1,5 +1,5 @@
-import React, { FC, ReactNode } from 'react'
-import { Chip } from '../Chip/Chip'
+import React, { FC } from 'react'
+import { LabelSlider } from '../LabelSlider/LabelSlider'
 
 type DifficultyProps = {
     rating: number
@@ -11,16 +11,10 @@ export const Difficulty: FC<DifficultyProps> = ({ rating}) => {
     const chipColor = difficulty === "Beginner" ? "green" : difficulty === "Intermediary" ? "amber" : "red"
 
     return (
-        <div className="group relative flex cursor-pointer after:shadow-lg after:shadow-black text-sm font-semibold">
-            <div className="flex items-center gap-2">
-                <div className="border p-2 flex items-center gap-2 transition-all w-16 delay-100 rounded-xl duration-1000 group-hover:w-44">
-                    <Chip text={rating.toFixed(1)} color={chipColor} />
-                </div>
-                <p className="absolute left-14 transition-all opacity-0 delay-100 duration-700 group-hover:left-[4.5rem] group-hover:opacity-100">{difficulty}</p>
-            </div>
-        </div>
+        <LabelSlider rating={rating} text={difficulty} chipColor={chipColor} />
     )
 }
+
 {/* <div className="absolute left-2 top-0 z-20 flex w-20 flex-col gap-4 self-end rounded-xl rounded-l-2xl border-none bg-[#7678ed] px-5 py-3 text-sm font-semibold leading-7 transition-all duration-700 group-hover:left-32 group-hover:w-20 group-hover:rounded-l-lg">
     <p className="text-[#fff]">{slider}</p>
 </div> */}
