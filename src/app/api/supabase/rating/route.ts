@@ -40,10 +40,10 @@ export async function GET(req, res) {
     const supabase = createClient();
     const { data, error } = await supabase
         .rpc('get_activity_ratings')
-    console.log("data", data)
+
     if (error) {
         console.error('Error fetching activity ratings:', error)
-        return null
+        return
     }
 
     return Response.json({ data })
