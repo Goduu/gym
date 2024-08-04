@@ -22,19 +22,23 @@ Conquer: Merge the divided sub-arrays by sorting and combining them in a manner 
     initialCode={"const mergeSort = (myArray) => {\n...\n}"}
     checkTests={[
         {
+            id: 1,
         call: "mergeSort([9,4,2,1,5])",
         expectedResult: [1,2,4,5,9]
         },
         {
+            id: 2,
         call: "mergeSort([])",
         expectedResult: []
         },
         {
+            id: 3,
         call: "mergeSort([9,-1,4,-2,-3,8])",
         expectedResult: [-3,-2,-1,4,8,9],
         hidden: true
         },
         {
+            id: 4,
         call: "mergeSort([1,2,3,4,5,6])",
         expectedResult: [1,2,3,4,5,6],
         hidden: true

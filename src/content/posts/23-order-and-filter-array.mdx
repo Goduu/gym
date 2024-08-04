@@ -25,6 +25,7 @@ const T = 3;
 const topIds = (input, clientId, T ) => {\n...\n}`}
     checkTests={[
         {
+        id: 1,
         call: `
         topIds([
             { id: 1, clientId: 12, value: 13 },
@@ -34,7 +35,8 @@ const topIds = (input, clientId, T ) => {\n...\n}`}
         expectedResult: [2, 1],
         },
         {
-            call: `
+        id: 2,
+        call: `
         topIds([
             { id: 1, clientId: 12, value: 13 },
             { id: 2, clientId: 1, value: 10 },
@@ -43,7 +45,8 @@ const topIds = (input, clientId, T ) => {\n...\n}`}
         expectedResult: [1, 3],
         },
         {
-            call: `
+        id: 3,
+        call: `
         topIds([{ id: 1, clientId: 12, value: 13 },
             { id: 2, clientId: 12, value: 15 },
             { id: 3, clientId: 12, value: -13 },
@@ -55,13 +58,15 @@ const topIds = (input, clientId, T ) => {\n...\n}`}
         expectedResult: [3, 4, 1],
         },
         {
-            call: `
+        id: 4,
+        call: `
         topIds([{ id: 1, clientId: 10, value: 13 }]
             , 12, 3)`,
         expectedResult: [],
         },
         {
-            call: `
+        id: 5,
+        call: `
         topIds([{ id: 1, clientId: 10, value: 13 }]
             , 10, 3)`,
         expectedResult: [1],

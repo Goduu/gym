@@ -29,6 +29,7 @@ const createLinkedList = (arr, index = 0) => {
 const findMiddleElement = (head) => {\n...\n}`}
     checkTests={[
         {
+        id: 1,
         call: `
         // list: 1 -> 2 -> 3 -> 4 -> 5 
         const head = createLinkedList([1,2,3,4,5]);
@@ -36,14 +37,18 @@ const findMiddleElement = (head) => {\n...\n}`}
         expectedResult: 3
         },
         {
-        call: `
+        id: 2,
+        call: 
+        `
         // list: 1 
         const head = createLinkedList([1]);
         findMiddleElement(head)`,
         expectedResult: 1
         },
         {
-        call: `
+        id: 3,
+        call: 
+        `
         // list: 1 -> 10 -> 4 
         const head = createLinkedList([1,10,4]);
         findMiddleElement(head)`,

@@ -14,26 +14,32 @@ Write a function that receives an array of numbers and returns the largest numbe
     initialCode={"cons findLargest = (myArray) => {\n...\n}"}
     checkTests={[
         {
+         id: 1,
         call: "findLargest([100,10,20])",
         expectedResult: 100
         },
         {
+         id: 2,
         call: "findLargest([-5, -2, 0])",
         expectedResult: 0
         },
       {
+         id: 3",
          call: "findLargest([-1])",
          expectedResult: -1,
       },
         {
+         id: 4,
         call: "findLargest([-3,30,9,-9,0,0,0])",
         expectedResult: 30,
         },
         {
+         id: 5",
          call: "findLargest([])",
          expectedResult: undefined,
       },
       {
+         id: 6",
          call: "findLargest([0])",
          expectedResult: 0,
          hidden: true

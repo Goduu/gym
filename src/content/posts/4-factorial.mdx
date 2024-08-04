@@ -13,35 +13,42 @@ Write a function that computes the factorial of a given number.
         initialCode={"const factorial = (val) => {\n...\n}"}
         checkTests={[
                 {
-                call: "factorial(0)",
-                expectedResult: 1
+                    id: 1,
+                    call: "factorial(0)",
+                    expectedResult: 1
                 },
                 {
-                call: "factorial(1)",
-                expectedResult: 1
+                    id: 2,
+                    call: "factorial(1)",
+                    expectedResult: 1
                 },
                 {
-                call: "factorial(5)",
-                expectedResult: 120,
+                    id: 3,
+                    call: "factorial(5)",
+                    expectedResult: 120,
                 },
                 {
-                call: "factorial(-1)",
-                expectedResult: null,
+                    id: 4,
+                    call: "factorial(-1)",
+                    expectedResult: null,
                 },
                 {
-                call: "factorial(3)",
-                expectedResult: 6,
-                hidden: true
+                    id: 5,
+                    call: "factorial(3)",
+                    expectedResult: 6,
+                    hidden: true
                 },
                 {
-                call: "factorial(10)",
-                expectedResult: 3628800,
-                hidden: true
+                    id: 6,
+                    call: "factorial(10)",
+                    expectedResult: 3628800,
+                    hidden: true
                 },
                 {
-                call: "factorial(20)",
-                expectedResult: 2432902008176640000,
-                hidden: true
+                    id: 7,
+                    call: "factorial(20)",
+                    expectedResult: 2432902008176640000,
+                    hidden: true
                 }
         ]}
 />

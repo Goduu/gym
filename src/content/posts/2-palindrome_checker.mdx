@@ -19,22 +19,26 @@ For example:
     initialCode={"const isPalindrome = (str) => {\n...\n}"}
     checkTests={[
         {
-        call: "isPalindrome('palindrome')",
+          id: 1,
+        call:   "isPalindrome('palindrome')",
         expectedResult: false
         },
         {
-        call: "isPalindrome('mom')",
+          id: 2,
+        call:   "isPalindrome('mom')",
         expectedResult: true
         },
         {
-        call: "isPalindrome('abcdf')",
-        expectedResult: false,
-        hidden: true
+          id: 3,
+          call: "isPalindrome('abcdf')",
+          expectedResult: false,
+          hidden: true
         },
         {
-        call: "isPalindrome('abccba')",
-        expectedResult: true,
-        hidden: true
+          id: 4,
+          call: "isPalindrome('abccba')",
+          expectedResult: true,
+          hidden: true
         },
         ]}
 />

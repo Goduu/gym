@@ -14,28 +14,33 @@ Given a string, find the largest chain of characters without repetition, i.e., f
 const longestSubstring = (str) => {\n...\n}`}
     checkTests={[
         {
+            id:1,
         call: `
         longestSubstring("abcdefghipqrstuvwxyz")`,
         expectedResult: "abcdefghipqrstuvwxyz"
         },
         {
+            id:2,
         call: `
         longestSubstring("abcabcabcabcabcabcd")`,
         expectedResult: "abcd"
         },
         {
+            id:3,
         call: `
         longestSubstring("")`,
         expectedResult: "",
         hidden: true
         },
         {
+            id:4,
         call: `
         longestSubstring("asdfgha")`,
         expectedResult: "asdfgh",
         hidden: true
         },
         {
+            id:5,
         call: `
         longestSubstring("aaaaaaaaaaaaaaaaaaa")`,
         expectedResult: "a",

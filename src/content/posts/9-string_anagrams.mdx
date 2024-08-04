@@ -15,24 +15,29 @@ typically using all the original letters exactly once.
     initialCode={"const areAnagrams = (str1, str2) => {\n...\n}"}
     checkTests={[
         {
+         id: 1,
         call: "areAnagrams('aabbcc', 'ccbbaa')",
         expectedResult: true
         },
         {
+         id: 2,
         call: "areAnagrams('banana', 'orange')",
         expectedResult: false
         },
         {
+         id: 3,
         call: "areAnagrams('listen', 'silent')",
         expectedResult: true,
         hidden: true
         },
         {
+         id: 4,
         call: "areAnagrams('alcapaha', 'pahaalca')",
         expectedResult: true,
         hidden: true
         },
       {
+         id: 5",
          call: "areAnagrams('', '')",
          expectedResult: true,
          hidden: true

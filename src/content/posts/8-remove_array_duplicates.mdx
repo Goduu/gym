@@ -13,18 +13,22 @@ Write a function that removes duplicate elements from an array.
     initialCode={"cons removeDuplicates = (myArray) => {\n...\n}"}
     checkTests={[
         {
+         id: 1,
         call: "removeDuplicates([1,2,3])",
         expectedResult: [1,2,3]
         },
         {
+         id: 2,
         call: "removeDuplicates([1,1,1,1])",
         expectedResult: [1]
         },
         {
+         id: 3,
            call: "removeDuplicates([])",
            expectedResult: []
         },
         {
+         id: 4,
         call: "removeDuplicates([1,1,1,2,2,1,2,9,7])",
         expectedResult: [1,2,9,7],
         hidden: true

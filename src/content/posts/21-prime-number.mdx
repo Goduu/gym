@@ -15,22 +15,26 @@ A prime number is a natural number greater than 1 that has no positive divisors 
 const isPrime = (myInt) => {\n...\n}`}
     checkTests={[
         {
+       id: 1,
         call: `
         isPrime(4)`,
         expectedResult: false
         },
         {
+       id: 2,
         call: `
         isPrime(3)`,
         expectedResult: true
         },
         {
+       id: 3,
         call: `
         isPrime(7)`,
         expectedResult: true,
         hidden: true
         },
         {
+       id: 4,
         call: `
         isPrime(100)`,
         expectedResult: false,

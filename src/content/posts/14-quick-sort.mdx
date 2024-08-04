@@ -20,19 +20,23 @@ Ps. The tests don't check if the quick sort algorithm is implemented correctly, 
     initialCode={"const quickSort = (myArray) => {\n...\n}"}
     checkTests={[
         {
+          id: 1,
         call: "quickSort([9,4,2,1,5,3,1,5,8,4,3])",
         expectedResult: [1,2,4,5,9]
         },
         {
+          id: 2,
         call: "quickSort([])",
         expectedResult: []
         },
         {
+          id: 3,
         call: "quickSort([9,-1,4,-2,-3,8])",
         expectedResult: [-3,-2,-1,4,8,9],
         hidden: true
         },
         {
+          id: 4,
         call: "quickSort([1,2,3,4,5,6,7,8,9])",
         expectedResult: [1,2,3,4,5,6],
         hidden: true

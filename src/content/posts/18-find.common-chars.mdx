@@ -21,22 +21,26 @@ Result: ["b", "c", "c"]
 const commonChars = (array1, array2) => {\n...\n}`}
     checkTests={[
         {
+       id: 1,
         call: `
         commonChars(["a","b","c","d"], ["a","b","c"])`,
         expectedResult: ["a", "b", "c"]
         },
         {
+       id: 2,
         call: `
         commonChars(["a", "b", "c", "c"], ["a", "c", "c", "d"])`,
         expectedResult: ["a", "c", "c"]
         },
         {
+       id: 3,
         call: `
         commonChars([], ["a", "b", "c", "c"])`,
         expectedResult: [],
         hidden: true
         },
         {
+       id: 4,
         call: `
         commonChars(["a", "a", "a"], ["a"])`,
         expectedResult: ["a"],

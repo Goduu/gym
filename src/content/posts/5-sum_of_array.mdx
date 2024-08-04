@@ -14,33 +14,40 @@ Write a function that finds the sum of all elements in an array.
     initialCode={"const sumArray = (myArray) => {\n...\n}"}
     checkTests={[
         {
-        call: "sumArray([1,10,20])",
-        expectedResult: 31
+         id: 1,
+         call: "sumArray([1,10,20])",
+         expectedResult: 31
         },
         {
-        call: "sumArray([-5, -2, 0])",
-        expectedResult: -7
+         id: 2,
+         call: "sumArray([-5, -2, 0])",
+         expectedResult: -7
         },
         {
-         call: "sumArray([])",
+         id: 3,
+        call:  "sumArray([])",
+            expectedResult: 0,
+        },
+        {
+         id: 4,
+         call: "sumArray([-3,3,9,-9,0,0,0])",
          expectedResult: 0,
-        },
-        {
-        call: "sumArray([-3,3,9,-9,0,0,0])",
-        expectedResult: 0,
-        hidden: true
+         hidden: true
         },
       {
+         id: 5,
          call: "sumArray([])",
          expectedResult: 0,
          hidden: true
       },
       {
+         id: 6,
          call: "sumArray([0])",
          expectedResult: 0,
          hidden: true
       },
       {
+         id: 7,
          call: "sumArray([-1, 1])",
          expectedResult: 0,
          hidden: true

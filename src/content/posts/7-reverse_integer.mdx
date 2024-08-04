@@ -13,23 +13,28 @@ Write a function that reverses an integer.
     initialCode={"cons reverseInteger = (myInteger) => {\n...\n}"}
     checkTests={[
         {
+         id: 1,
         call: "reverseInteger(987)",
         expectedResult: 789
         },
         {
+         id: 2,
         call: "reverseInteger(1234)",
         expectedResult: 4321
         },
         {
+         id: 3,
         call: "reverseInteger(-12)",
         expectedResult: -21
         },
         {
+         id: 4,
         call: "reverseInteger(-123)",
         expectedResult: -321,
         hidden: true
         },
          {
+            id: 5",
             call: "reverseInteger(0)",
             expectedResult: 0,
             hidden: true
