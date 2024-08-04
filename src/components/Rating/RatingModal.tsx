@@ -1,7 +1,11 @@
 "use client"
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Chip } from '../Chip/Chip';
 import { Button } from '../Button';
+import { upsertRating } from 'src/app/api-functions/upsertRating';
+import { Loading } from '../Loading';
+import { fetchRatingByActivityId } from 'src/app/api-functions/fetchRatingByActivityId';
+import { fetchUserRatings } from 'src/app/api-functions/fetchUserRatings';
 
 type RatingModalProps = {
     visible: boolean
@@ -13,7 +17,15 @@ type RatingModalProps = {
 export const RatingModal: FC<RatingModalProps> = ({ visible, currentRating, activityId, userId, close }) => {
     const [firstRating, setFirstRating] = useState<FirstRating>()
     const [selectedRating, setSelectedRating] = useState<Rating | null>()
-    const filteredRatings = ratings.filter(rating => rating.firstRatingId === firstRating?.id)
+    const filteredRatings = ratingOptions.filter(rating => rating.firstRatingId === firstRating?.id)
+    const [loading, setLoading] = useState<boolean>(false)
+
+    useEffect(() => {
+        const currentSelectedRating = ratingOptions.find(rating => rating.rating === currentRating);
+        setSelectedRating(currentSelectedRating);
+        const currentFirstRating = firstRatings.find(rating => rating.id === currentSelectedRating?.firstRatingId);
+        setFirstRating(currentFirstRating);
+    }, [currentRating]);
 
     const handleChangeFirstRating = (rating: FirstRating) => {
         setFirstRating(rating)
@@ -21,17 +33,18 @@ export const RatingModal: FC<RatingModalProps> = ({ visible, currentRating, acti
     }
 
     const confirmRating = async () => {
-        const response = await fetch(`/api/supabase/rating`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ user_id: userId, activity_id: activityId, rating: selectedRating?.rating }),
-        })
+        if (!selectedRating) return
+        setLoading(true)
+        await upsertRating({ userId: userId, activityId, rating: selectedRating.rating })
+            .then(async (success) => {
+                success && close()
+                await fetchRatingByActivityId()
+                await fetchUserRatings(userId)
 
-        if (response.ok) {
-            close()
-        }
+            })
+            .finally(() => setLoading(false))
+
+
     }
 
     return (
@@ -74,6 +87,7 @@ export const RatingModal: FC<RatingModalProps> = ({ visible, currentRating, acti
                     </div>
                 </div>
             </div>
+            <Loading visible={loading} />
         </div>
     )
 }
@@ -99,7 +113,7 @@ const firstRatings: FirstRating[] = [
     { id: "a", label: "Advanced", chipColor: "red" },
 ]
 
-const ratings: Rating[] = [
+const ratingOptions: Rating[] = [
     { firstRatingId: "b", rating: 1, label: "Piece of Cake", chipColor: "green" },
     { firstRatingId: "b", rating: 2, label: "Walk in the Park", chipColor: "green" },
     { firstRatingId: "b", rating: 3, label: "Barely a Sweat", chipColor: "green" },

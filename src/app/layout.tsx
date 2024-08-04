@@ -5,6 +5,10 @@ import { Analytics } from "@/components/analytics"
 import { Header } from "@/components/Header/Header"
 import { ReactNode } from "react"
 import { Footer } from "@/components/Header/Footer"
+import { fetchRatingByActivityId } from "./api-functions/fetchRatingByActivityId"
+import { RatingContextWrapper } from "@/components/Rating/Context"
+import { fetchUserRatings } from "./api-functions/fetchUserRatings"
+import { userMetadata } from "src/lib/auth"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -12,7 +16,11 @@ type RootLayoutProps = {
   children: ReactNode
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const ratings = await fetchRatingByActivityId() || {}
+  const userData = await userMetadata()
+  const userRatings = userData ? await fetchUserRatings(userData?.id) : {}
+
   return (
     <html lang="en">
       <body
@@ -21,7 +29,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           <div className="flex flex-col py-10 px-4 place-items-center">
-            <main>{children}</main>
+            <main>
+              <RatingContextWrapper ratings={ratings} userRatings={userRatings}>
+                {children}
+              </RatingContextWrapper>
+            </main>
           </div>
           <Analytics />
           <Footer />

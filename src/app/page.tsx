@@ -1,7 +1,7 @@
 import { Difficulty } from "@/components/Difficulty/Difficulty"
 import { allPosts } from "@contentlayer/generated"
 import Link from "next/link"
-import { fetchRatingByActivityId } from "src/api-functions/fetchRatingByActivityId"
+import { fetchRatingByActivityId } from "src/app/api-functions/fetchRatingByActivityId"
 
 export default async function Home() {
   const ratings = await fetchRatingByActivityId()
