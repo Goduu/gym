@@ -28,15 +28,12 @@ export const GiveRating: FC<GiveRatingProps> = ({ activityId, userId }) => {
         <div className='flex gap-4 group'>
             <Button size='small' handleClick={open} disabled={!loggedUser}>
                 <div className='leading-4 flex flex-col items-center px-1'>
-                    
                     {activityRating ? <div>{activityRating}</div> : <SpeedHard className='w-5' />}
                     {activityRating ? "My Rate" : "Rate Me"}
                 </div>
             </Button>
             <Difficulty rating={ratings[activityId]} />
-            {loggedUser &&
-                <RatingModal activityId={activityId} visible={newRatingModalVisible} currentRating={activityRating} userId={userId} close={close} />
-            }
+            <RatingModal activityId={activityId} visible={newRatingModalVisible} currentRating={activityRating} userId={userId} close={close} />
         </div >
     )
 }

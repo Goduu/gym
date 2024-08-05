@@ -9,6 +9,7 @@ import { fetchRatingByActivityId } from "./api-functions/fetchRatingByActivityId
 import { RatingContextWrapper } from "@/components/Rating/Context"
 import { fetchUserRatings } from "./api-functions/fetchUserRatings"
 import { userMetadata } from "src/lib/auth"
+import { UserContextWrapper } from "@/components/UserContextWrapper"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -30,9 +31,11 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           <Header />
           <div className="flex flex-col py-10 px-4 place-items-center">
             <main>
-              <RatingContextWrapper ratings={ratings} userRatings={userRatings}>
-                {children}
-              </RatingContextWrapper>
+              <UserContextWrapper userData={userData || {}}>
+                <RatingContextWrapper ratings={ratings} userRatings={userRatings}>
+                  {children}
+                </RatingContextWrapper>
+              </UserContextWrapper>
             </main>
           </div>
           <Analytics />

@@ -1,66 +1,61 @@
 "use client"
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
-import { FC, useCallback, useRef, useState } from 'react';
-import { CheckTest } from './types';
+import { useRef } from 'react';
 import { CheckTestItem } from './CheckTestItem';
 import { useTheme } from "next-themes"
 import { Button } from '../Button';
+import { Loading } from '../Loading';
+import { CodeEditorProps, useCodeEditorHandlers } from './useCodeEditorHandlers';
 
-
-export type CodeEditorProps = {
-    initialCode?: string,
-    height?: string,
-    checkTests: CheckTest[]
-}
-
-export function CodeEditor({ initialCode, height = "auto", checkTests = [] }: CodeEditorProps) {
-    const [code, setCode] = useState(initialCode);
-    const [tests, setTests] = useState<CheckTest[]>(checkTests);
-    const editorRef = useRef(null);
+export function CodeEditor({ activityId, currentUserProgress, initialCode, checkTests = [] }: CodeEditorProps) {
     const { theme } = useTheme()
-    const darkLightTheme = theme === "dark" ? "dark" : "light"
+    const currentTheme = theme === "dark" ? "dark" : "light"
+
+    const editorRef = useRef(null);
+    const {
+        code,
+        tests,
+        loading,
+        handleExecuteCode,
+        handleSaveProgress,
+        onChange } = useCodeEditorHandlers({ activityId, currentUserProgress, initialCode, checkTests })
 
 
-    const onChange = useCallback((val, viewUpdate) => {
-        setCode(val);
-    }, []);
-
-    const handleExecuteCode = () => {
-        setTests(tests.map(test => {
-            try {
-                const result = eval(code + "; " + test.call)
-                return { ...test, result, testRun: true }
-            } catch (error) {
-                return { ...test, result: error, testRun: true }
-            }
-        }))
-    };
 
     return (
         <div className='py-4 mb-10'>
-            <CodeMirror value={code} ref={editorRef} height={height} extensions={[javascript({ jsx: true })]} onChange={onChange} theme={darkLightTheme} />
+            <CodeMirror
+                value={code}
+                ref={editorRef}
+                height="auto"
+                extensions={[javascript({ jsx: true })]}
+                onChange={onChange}
+                theme={currentTheme}
+            />
             <div className="mt-4">
                 <div className='flex justify-between items-center'>
-                    <h2>
-                        Tests
-                    </h2>
-                    <Button handleClick={handleExecuteCode}>Execute Tests</Button>
+                    <h2>Tests</h2>
+                    <div className='flex gap-4'>
+                        <Button color="secondary" size='small' handleClick={handleSaveProgress}>
+                            Save my progress
+                        </Button>
+                        <Button size='small' handleClick={handleExecuteCode}>
+                            Run Tests
+                        </Button>
+                    </div>
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <div className="flex gap-2 text-xl font-bold">
+                    <div className="flex gap-2 text-xl font-bold ">
                         <div className='w-1/2'>Function Call:</div>
                         <div>Expected:</div>
                     </div>
-                    {
-                        tests.map((test, index) => {
-                            return (
-                                <CheckTestItem key={index} test={test} />)
-                        })
-                    }
+                    {tests.map((test, index) => (
+                        <CheckTestItem key={test.id} test={test} />
+                    ))}
                 </div>
             </div>
-
+            <Loading visible={loading} />
         </div>
     )
 

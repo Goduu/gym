@@ -11,7 +11,7 @@ export const UserSettings: FC = async () => {
     const disabled = !user
 
     return (
-        <Tooltip text='Settings' disabled={disabled}>
+        <Tooltip text='Settings' disabled={disabled} position='bottom'>
             <Button disabled={disabled} color="secondary" className={`${disabled ? "opacity-0" : "opacity-100"}`}>
                 <Link href={disabled ? "" : "/user"} className={disabled ? "!cursor-default" : ""}>
                     <IoSettingsOutline className="w-6 h-6" />

@@ -11,7 +11,7 @@ type RatingModalProps = {
     visible: boolean
     currentRating: number
     activityId: number
-    userId: string
+    userId?: string
     close: () => void
 }
 export const RatingModal: FC<RatingModalProps> = ({ visible, currentRating, activityId, userId, close }) => {
@@ -27,6 +27,8 @@ export const RatingModal: FC<RatingModalProps> = ({ visible, currentRating, acti
         setFirstRating(currentFirstRating);
     }, [currentRating]);
 
+    if (!userId) return null
+
     const handleChangeFirstRating = (rating: FirstRating) => {
         setFirstRating(rating)
         setSelectedRating(null)
@@ -38,6 +40,7 @@ export const RatingModal: FC<RatingModalProps> = ({ visible, currentRating, acti
         await upsertRating({ userId: userId, activityId, rating: selectedRating.rating })
             .then(async (success) => {
                 success && close()
+                //@TODO: Refactor to use react-query
                 await fetchRatingByActivityId()
                 await fetchUserRatings(userId)
 

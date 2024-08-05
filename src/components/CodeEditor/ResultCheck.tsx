@@ -2,8 +2,7 @@ import React, { FC } from 'react'
 import { CheckTest } from './types'
 import { FaRegCircleCheck, FaRegCircleQuestion, FaRegCircleXmark } from '@/components/Icons'
 import { stringifyVariable } from './functions'
-import { ResultTooltip } from './ResultTooltip'
-import { Mdx } from '../MdxComponents'
+import { Tooltip } from '../Tooltip'
 
 type ResultCheckProps = {
     test: CheckTest
@@ -24,20 +23,21 @@ export const ResultCheck: FC<ResultCheckProps> = ({ test }) => {
             return "?"
         }
 
-        if (typeof test.result === "object" && "message" in test.result) {
-            return test.result.message
+        if (typeof test.evalResult === "object" && "message" in test.evalResult) {
+            return test.evalResult.message
         }
-        console.log(test.result)
-        return formatResult(test.result)
+        return formatResult(test.evalResult)
     }
 
     const testPassed = (test: CheckTest) => {
-        return stringifyVariable(test.result) === stringifyVariable(test.expectedResult)
+        return stringifyVariable(test.expectedResult) === stringifyVariable(test.evalResult)
     }
 
     if (!test.testRun) {
         return (
-            <FaRegCircleQuestion className='w-7 text-gray-700' />
+            <Tooltip text={"Run test"}>
+                <FaRegCircleQuestion className='w-7 text-gray-700' />
+            </Tooltip>
         )
     }
     if (testPassed(test)) {
@@ -45,9 +45,9 @@ export const ResultCheck: FC<ResultCheckProps> = ({ test }) => {
     }
 
     return (
-        <ResultTooltip tooltip={getErrorTooltip(test)}>
+        <Tooltip text={getErrorTooltip(test)}>
             <FaRegCircleXmark className='w-7 text-rose-700' />
-        </ResultTooltip>
+        </Tooltip>
 
     )
 }

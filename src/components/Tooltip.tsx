@@ -1,29 +1,25 @@
-import { FC, ReactNode } from 'react'
-
-type TooltipProps = {
-    children: ReactNode,
-    text: string,
+import React, { FC, ReactNode } from 'react'
+export type TooltipProps = {
+    text: string
+    position?: "top" | "bottom"
     disabled?: boolean
+    children: ReactNode,
 }
-
-export const Tooltip: FC<TooltipProps> = ({ children, text, disabled }) => {
+export const Tooltip: FC<TooltipProps> = ({ children, position = "top", text, disabled=false }) => {
 
     return (
-        <div className={!disabled ? "group" : ""}>
+        <div className={`${disabled ? "" : "group"} relative flex justify-between`}>
             {children}
             <div className={`
-                    opacity-0 group-hover:opacity-100 group-hover:z-50 
-                    flex absolute justify-center
-                    transition duration-150 delay-150 ease-in-out`}>
-                <span
-                    className="text-gray-800 bg-gray-200 font-bold p-1 mt-1 rounded transition-colors duration-300"
-                >
+                opacity-0 group-hover:opacity-100 
+                transition duration-200 delay-150 ease-in-out
+                absolute left-1/2 transform -translate-x-1/2 w-fit
+                ${position === "top" ? "bottom-full mb-1 sm:mb-2" : "top-full mt-1 sm:mt-2"}
+                `}>
+                <div className="bg-gray-800 text-white text-s font-bold rounded-lg p-2 w-full">
                     {!disabled && text}
-                </span>
-            </div >
+                </div>
+            </div>
         </div>
-
     )
 }
-
-

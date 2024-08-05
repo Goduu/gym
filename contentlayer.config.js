@@ -28,12 +28,25 @@ export const Post = defineDocumentType(() => ({
     description: {
       type: "string",
     },
+    instructions: {
+      type: "mdx",
+      required: true,
+    },
     date: {
       type: "date",
       required: true,
     },
     language: {
       type: "string",
+      required: true,
+    },
+    initialCode: {
+      type: "string",
+      required: true,
+    },
+    checkTests: {
+      type: "list",
+      of: { type: "json" },
       required: true,
     },
   },

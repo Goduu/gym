@@ -6,6 +6,8 @@ import { Mdx } from "@/components/MdxComponents"
 import { ImprovementArea } from "@/components/CodeEditor/ImprovementArea"
 import { GiveRating } from "@/components/Rating/GiveRating"
 import { userMetadata } from "src/lib/auth"
+import { CodeEditor } from "@/components/CodeEditor/CodeEditor"
+import { Activity, fetchUserActivity } from "src/app/api-functions/fetchUserActivity"
 
 interface PostProps {
   params: {
@@ -53,6 +55,8 @@ export default async function PostPage({ params }: PostProps) {
     notFound()
   }
 
+  const activity: Activity | null | undefined = userData && await fetchUserActivity(userData.id, post.id)
+
   return (
     <article className="pb-6 prose dark:prose-invert">
       <h1 className="mb-2">{post.title}</h1>
@@ -63,6 +67,9 @@ export default async function PostPage({ params }: PostProps) {
       )}
       <GiveRating activityId={post.id} userId={userData?.id} />
       <hr className="my-4" />
+      <h2>Instructions</h2>
+      <Mdx code={post.instructions.code} />
+      <CodeEditor currentUserProgress={activity} activityId={post.id} initialCode={post.initialCode} checkTests={post.checkTests} />
       <Mdx code={post.body.code} />
       <ImprovementArea pageTitle={post.title} />
     </article>
