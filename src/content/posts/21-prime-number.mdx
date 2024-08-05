@@ -2,47 +2,38 @@
 id: 21
 title: Prime number
 description: Given an integer, return true if it's a prime number, false otherwise.
+instructions: |
+    Given an integer, return true if it's a prime number, false otherwise.
+    A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+    
+    Write a function that takes an integer as input and returns true if it is a prime number, false otherwise.
+    
+    ### Example
+    ```js
+    isPrime(4) // false
+    isPrime(3) // true
+    ```
+    
+    You can assume that the input integer is non-negative.
 date: "2024-04-22"
 language: "javascript"
+initialCode: "const isPrime = (myInt) => {\n...\n}"
+checkTests:
+  - id: 1
+    call: "isPrime(4)"
+    expectedResult: false
+  - id: 2
+    call: "isPrime(3)"
+    expectedResult: true
+  - id: 3
+    call: "isPrime(7)"
+    expectedResult: true
+    hidden: true
+  - id: 4
+    call: "isPrime(100)"
+    expectedResult: false
+    hidden: true
 ---
-
-## Question
-Given an integer, return true if it's a prime number, false otherwise.
-A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.
-
-<CodeEditor 
-    initialCode={`
-const isPrime = (myInt) => {\n...\n}`}
-    checkTests={[
-        {
-       id: 1,
-        call: `
-        isPrime(4)`,
-        expectedResult: false
-        },
-        {
-       id: 2,
-        call: `
-        isPrime(3)`,
-        expectedResult: true
-        },
-        {
-       id: 3,
-        call: `
-        isPrime(7)`,
-        expectedResult: true,
-        hidden: true
-        },
-        {
-       id: 4,
-        call: `
-        isPrime(100)`,
-        expectedResult: false,
-        hidden: true
-        }
-        
-        ]}
-/>
 
 <details>
 <summary>See Solution</summary>

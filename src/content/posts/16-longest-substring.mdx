@@ -2,52 +2,34 @@
 id: 16
 title: Longest Substring
 description: Find the largest chain of characters without repetition.
+instructions: |
+    Write a function that receives a string and returns the largest chain of characters without repetition.
+    
+    For example, if the input string is "abcdefghipqrstuvwxyz", the output should be "abcdefghipqrstuvwxyz".
+    If the input string is "abcabcabcabcabcabcd", the output should be "abcd".
 date: "2024-03-29"
 language: "javascript"
+initialCode: "const longestSubstring = (str) => {\n...\n}"
+checkTests:
+  - id: 1
+    call: "longestSubstring('abcdefghipqrstuvwxyz')"
+    expectedResult: "abcdefghipqrstuvwxyz"
+  - id: 2
+    call: "longestSubstring('abcabcabcabcabcabcd')"
+    expectedResult: "abcd"
+  - id: 3
+    call: "longestSubstring('')"
+    expectedResult: ""
+    hidden: true
+  - id: 4
+    call: "longestSubstring('asdfgha')"
+    expectedResult: "asdfgh"
+    hidden: true
+  - id: 5
+    call: "longestSubstring('aaaaaaaaaaaaaaaaaaa')"
+    expectedResult: "a"
+    hidden: true
 ---
-
-## Question
-Given a string, find the largest chain of characters without repetition, i.e., find the longest substring without any repeating characters.
-
-<CodeEditor 
-    initialCode={`
-const longestSubstring = (str) => {\n...\n}`}
-    checkTests={[
-        {
-            id:1,
-        call: `
-        longestSubstring("abcdefghipqrstuvwxyz")`,
-        expectedResult: "abcdefghipqrstuvwxyz"
-        },
-        {
-            id:2,
-        call: `
-        longestSubstring("abcabcabcabcabcabcd")`,
-        expectedResult: "abcd"
-        },
-        {
-            id:3,
-        call: `
-        longestSubstring("")`,
-        expectedResult: "",
-        hidden: true
-        },
-        {
-            id:4,
-        call: `
-        longestSubstring("asdfgha")`,
-        expectedResult: "asdfgh",
-        hidden: true
-        },
-        {
-            id:5,
-        call: `
-        longestSubstring("aaaaaaaaaaaaaaaaaaa")`,
-        expectedResult: "a",
-        hidden: true
-        },
-        ]}
-/>
 
 <details>
 <summary>See Solution</summary>

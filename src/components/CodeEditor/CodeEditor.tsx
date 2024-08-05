@@ -17,6 +17,8 @@ export function CodeEditor({ activityId, currentUserProgress, initialCode, check
         code,
         tests,
         loading,
+        allTestsPassed,
+        testsPassed,
         handleExecuteCode,
         handleSaveProgress,
         onChange } = useCodeEditorHandlers({ activityId, currentUserProgress, initialCode, checkTests })
@@ -24,7 +26,7 @@ export function CodeEditor({ activityId, currentUserProgress, initialCode, check
 
 
     return (
-        <div className='py-4 mb-10'>
+        <div className='flex flex-col gap-8'>
             <CodeMirror
                 value={code}
                 ref={editorRef}
@@ -33,11 +35,17 @@ export function CodeEditor({ activityId, currentUserProgress, initialCode, check
                 onChange={onChange}
                 theme={currentTheme}
             />
-            <div className="mt-4">
                 <div className='flex justify-between items-center'>
-                    <h2>Tests</h2>
+                    <div className='flex gap-4 items-center font-bold'>
+                        <div className='text-3xl' >
+                            Tests
+                        </div>
+                        <div>
+                            {testsPassed.length}/{tests.length}
+                        </div>
+                    </div>
                     <div className='flex gap-4'>
-                        <Button color="secondary" size='small' handleClick={handleSaveProgress}>
+                        <Button ping={allTestsPassed && !currentUserProgress} color="secondary" size='small' handleClick={handleSaveProgress}>
                             Save my progress
                         </Button>
                         <Button size='small' handleClick={handleExecuteCode}>
@@ -54,7 +62,6 @@ export function CodeEditor({ activityId, currentUserProgress, initialCode, check
                         <CheckTestItem key={test.id} test={test} />
                     ))}
                 </div>
-            </div>
             <Loading visible={loading} />
         </div>
     )

@@ -2,39 +2,28 @@
 id: 8
 title: Remove Duplicates from an Array
 description: Write a function that removes duplicate elements from an array.
+instructions: |
+    Write a function that receives an array of numbers and returns an array with the duplicate elements removed.
+    
+    For example, if the input is [1,2,3,1,2,3], the output should be [1,2,3].
 date: "2024-03-20"
 language: "javascript"
+initialCode: "const removeDuplicates = (myArray) => {\n...\n}"
+checkTests:
+  - id: 1
+    call: "removeDuplicates([1,2,3])"
+    expectedResult: [1,2,3]
+  - id: 2
+    call: "removeDuplicates([1,1,1,1])"
+    expectedResult: [1]
+  - id: 3
+    call: "removeDuplicates([])"
+    expectedResult: []
+  - id: 4
+    call: "removeDuplicates([1,1,1,2,2,1,2,9,7])"
+    expectedResult: [1,2,9,7]
+    hidden: true
 ---
-
-## Question
-Write a function that removes duplicate elements from an array.
-
-<CodeEditor 
-    initialCode={"cons removeDuplicates = (myArray) => {\n...\n}"}
-    checkTests={[
-        {
-         id: 1,
-        call: "removeDuplicates([1,2,3])",
-        expectedResult: [1,2,3]
-        },
-        {
-         id: 2,
-        call: "removeDuplicates([1,1,1,1])",
-        expectedResult: [1]
-        },
-        {
-         id: 3,
-           call: "removeDuplicates([])",
-           expectedResult: []
-        },
-        {
-         id: 4,
-        call: "removeDuplicates([1,1,1,2,2,1,2,9,7])",
-        expectedResult: [1,2,9,7],
-        hidden: true
-        },
-        ]}
-/>
 
 <details>
   <summary>See Solution</summary>

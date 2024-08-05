@@ -2,49 +2,47 @@
 id: 12
 title: Merge Sort
 description: Implement a function that sorts an array using the merge sort algorithm.
+instructions: |
+    Merge Sort is a sorting algorithm that follows the divide-and-conquer approach. 
+    The problem is to sort an array of elements in non-decreasing order (ascending order), 
+    i.e., rearrange the elements such that they are in increasing order.
+
+    ### Tip
+
+    The Merge Sort algorithm works as follows:
+
+    1. Divide: Divide the unsorted array into two halves recursively until each sub-array contains only one element.
+    2. Conquer: Merge the divided sub-arrays by sorting and combining them in a manner that results in a single sorted array.
+    3. Implement a function `mergeSort` that takes an array of integers as input and returns the sorted array using the Merge Sort algorithm.
+
+    The function should have the following signature:
+    
+    `const mergeSort = (myArray) => {...}`
+
+    The function should return an array of integers in non-decreasing order.
+
+    For example, `mergeSort([9,4,2,1,5])` should return `[1,2,4,5,9]`.
+
+    PS: The checks doesn't check if you sorted the array correctly using merge sort, just if the array is sorted. Make you best. 
 date: "2024-03-20"
 language: "javascript"
+initialCode: "const mergeSort = (myArray) => {\n...\n}"
+checkTests:
+  - id: 1
+    call: "mergeSort([9,4,2,1,5])"
+    expectedResult: [1,2,4,5,9]
+  - id: 2
+    call: "mergeSort([])"
+    expectedResult: []
+  - id: 3
+    call: "mergeSort([9,-1,4,-2,-3,8])"
+    expectedResult: [-3,-2,-1,4,8,9]
+    hidden: true
+  - id: 4
+    call: "mergeSort([1,2,3,4,5,6])"
+    expectedResult: [1,2,3,4,5,6]
+    hidden: true
 ---
-
-## Question
-Merge Sort is a sorting algorithm that follows the divide-and-conquer approach. 
-The problem is to sort an array of elements in non-decreasing order (ascending order), 
-i.e., rearrange the elements such that they are in increasing order.
-
-### Tip
-The Merge Sort algorithm works as follows:
-
-Divide: Divide the unsorted array into two halves recursively until each sub-array contains only one element.
-
-Conquer: Merge the divided sub-arrays by sorting and combining them in a manner that results in a single sorted array.
-
-<CodeEditor 
-    initialCode={"const mergeSort = (myArray) => {\n...\n}"}
-    checkTests={[
-        {
-            id: 1,
-        call: "mergeSort([9,4,2,1,5])",
-        expectedResult: [1,2,4,5,9]
-        },
-        {
-            id: 2,
-        call: "mergeSort([])",
-        expectedResult: []
-        },
-        {
-            id: 3,
-        call: "mergeSort([9,-1,4,-2,-3,8])",
-        expectedResult: [-3,-2,-1,4,8,9],
-        hidden: true
-        },
-        {
-            id: 4,
-        call: "mergeSort([1,2,3,4,5,6])",
-        expectedResult: [1,2,3,4,5,6],
-        hidden: true
-        },
-        ]}
-/>
 
 <details>
   <summary>See Solution</summary>

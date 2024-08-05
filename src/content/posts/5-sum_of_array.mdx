@@ -2,58 +2,40 @@
 id: 5
 title: Sum of Array
 description: Write a function that finds the sum of all elements in an array.
+instructions: |
+    Write a function that receives an array of numbers and returns the sum of all elements in it.
+    
+    For example, if the input is [1,10,20], the output should be 31.
 date: "2024-03-20"
 language: "javascript"
+initialCode: "const sumArray = (myArray) => {\n...\n}"
+checkTests:
+  - id: 1
+    call: "sumArray([1,10,20])"
+    expectedResult: 31
+  - id: 2
+    call: "sumArray([-5, -2, 0])"
+    expectedResult: -7
+  - id: 3
+    call: "sumArray([])"
+    expectedResult: 0
+  - id: 4
+    call: "sumArray([-3,3,9,-9,0,0,0])"
+    expectedResult: 0
+    hidden: true
+  - id: 5
+    call: "sumArray([])"
+    expectedResult: 0
+    hidden: true
+  - id: 6
+    call: "sumArray([0])"
+    expectedResult: 0
+    hidden: true
+  - id: 7
+    call: "sumArray([-1, 1])"
+    expectedResult: 0
+    hidden: true
 ---
-
-## Question
-Write a function that finds the sum of all elements in an array.
-
-
-<CodeEditor 
-    initialCode={"const sumArray = (myArray) => {\n...\n}"}
-    checkTests={[
-        {
-         id: 1,
-         call: "sumArray([1,10,20])",
-         expectedResult: 31
-        },
-        {
-         id: 2,
-         call: "sumArray([-5, -2, 0])",
-         expectedResult: -7
-        },
-        {
-         id: 3,
-        call:  "sumArray([])",
-            expectedResult: 0,
-        },
-        {
-         id: 4,
-         call: "sumArray([-3,3,9,-9,0,0,0])",
-         expectedResult: 0,
-         hidden: true
-        },
-      {
-         id: 5,
-         call: "sumArray([])",
-         expectedResult: 0,
-         hidden: true
-      },
-      {
-         id: 6,
-         call: "sumArray([0])",
-         expectedResult: 0,
-         hidden: true
-      },
-      {
-         id: 7,
-         call: "sumArray([-1, 1])",
-         expectedResult: 0,
-         hidden: true
-      }
-        ]}
-/>
 
 <details>
   <summary>See Solution</summary>

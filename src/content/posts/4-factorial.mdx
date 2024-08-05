@@ -2,57 +2,40 @@
 id: 4
 title: Factorial
 description: Write a function that computes the factorial of a given number.
+instructions: |
+    Write a function that receives a number, computes and return its factorial.
+
+    For example, if the input is 5, the output should be 120.
 date: "2024-03-20"
 language: "javascript"
+initialCode: "const factorial = (val) => {\n...\n}"
+checkTests:
+  - id: 1
+    call: "factorial(0)"
+    expectedResult: 1
+  - id: 2
+    call: "factorial(1)"
+    expectedResult: 1
+  - id: 3
+    call: "factorial(5)"
+    expectedResult: 120
+  - id: 4
+    call: "factorial(-1)"
+    expectedResult: null
+    hidden: true
+  - id: 5
+    call: "factorial(3)"
+    expectedResult: 6
+    hidden: true
+  - id: 6
+    call: "factorial(10)"
+    expectedResult: 3628800
+    hidden: true
+  - id: 7
+    call: "factorial(20)"
+    expectedResult: 2432902008176640000
+    hidden: true
 ---
-
-## Question
-Write a function that computes the factorial of a given number.
-
-<CodeEditor 
-        initialCode={"const factorial = (val) => {\n...\n}"}
-        checkTests={[
-                {
-                    id: 1,
-                    call: "factorial(0)",
-                    expectedResult: 1
-                },
-                {
-                    id: 2,
-                    call: "factorial(1)",
-                    expectedResult: 1
-                },
-                {
-                    id: 3,
-                    call: "factorial(5)",
-                    expectedResult: 120,
-                },
-                {
-                    id: 4,
-                    call: "factorial(-1)",
-                    expectedResult: null,
-                },
-                {
-                    id: 5,
-                    call: "factorial(3)",
-                    expectedResult: 6,
-                    hidden: true
-                },
-                {
-                    id: 6,
-                    call: "factorial(10)",
-                    expectedResult: 3628800,
-                    hidden: true
-                },
-                {
-                    id: 7,
-                    call: "factorial(20)",
-                    expectedResult: 2432902008176640000,
-                    hidden: true
-                }
-        ]}
-/>
-
 
 <details>
   <summary>See Solution</summary>

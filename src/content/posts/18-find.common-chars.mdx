@@ -1,54 +1,35 @@
 ---
 id: 18
-title: Find common characthers 
+title: Find common between lists
 description: Give two lists of characters, find the common characters between them.
+instructions: |
+    Write a function that receives two lists of characters and returns the common characters between them.
+    
+    For example, if the input lists are ["a", "b", "c", "c"] and ["b", "c", "c", "d"], the output should be ["b", "c", "c"].
+    
+    The order of the characters in the output list does not matter.
+    
+    If there are no common characters between the two lists, the output should be an empty list.
+
 date: "2024-05-08"
 language: "javascript"
+initialCode: "const commonChars = (array1, array2) => {\n...\n}"
+checkTests:
+  - id: 1
+    call: "commonChars(['a','b','c','d'], ['a','b','c'])"
+    expectedResult: ["a", "b", "c"]
+  - id: 2
+    call: "commonChars(['a', 'b', 'c', 'c'], ['a', 'c', 'c', 'd'])"
+    expectedResult: ["a", "c", "c"]
+  - id: 3
+    call: "commonChars([], ['a', 'b', 'c', 'c'])"
+    expectedResult: []
+    hidden: true
+  - id: 4
+    call: "commonChars(['a', 'a', 'a'], ['a'])"
+    expectedResult: ["a"]
+    hidden: true
 ---
-
-## Question
-Given two lists of characters, find the common characters between them.
-### Example
-for the lists:  and ["b", "c", "c", "d"], the common characters are ["b", "c", "c"].
-
-```mathematica
-Lists: ["a", "b", "c", "c"] and ["b", "c", "c", "d"]
-Result: ["b", "c", "c"]
-```
-
-<CodeEditor 
-    initialCode={`
-const commonChars = (array1, array2) => {\n...\n}`}
-    checkTests={[
-        {
-       id: 1,
-        call: `
-        commonChars(["a","b","c","d"], ["a","b","c"])`,
-        expectedResult: ["a", "b", "c"]
-        },
-        {
-       id: 2,
-        call: `
-        commonChars(["a", "b", "c", "c"], ["a", "c", "c", "d"])`,
-        expectedResult: ["a", "c", "c"]
-        },
-        {
-       id: 3,
-        call: `
-        commonChars([], ["a", "b", "c", "c"])`,
-        expectedResult: [],
-        hidden: true
-        },
-        {
-       id: 4,
-        call: `
-        commonChars(["a", "a", "a"], ["a"])`,
-        expectedResult: ["a"],
-        hidden: true
-        }
-        
-        ]}
-/>
 
 <details>
 <summary>See Solution</summary>

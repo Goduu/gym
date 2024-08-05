@@ -2,34 +2,25 @@
 id: 10
 title: Merge Two Sorted Arrays
 description: Write a function that merges two sorted arrays into a single sorted array.
+instructions: |
+    Write a function that receives two sorted arrays and merges them into a single sorted array.
+
+    For example, if the input arrays are [1,2,3] and [4,5,6], the output should be [1,2,3,4,5,6].
 date: "2024-03-20"
 language: "javascript"
+initialCode: "const mergeSortedArrays = (array1, array2) => {\n...\n}"
+checkTests:
+  - id: 1
+    call: "mergeSortedArrays([1,2,3], [4,5,6])"
+    expectedResult: [1,2,3,4,5,6]
+  - id: 2
+    call: "mergeSortedArrays([1,1,2,6], [2,7,9])"
+    expectedResult: [1,1,2,2,6,7,9]
+  - id: 3
+    call: "mergeSortedArrays([-1,0,3,3,9], [-2,0,7,10])"
+    expectedResult: [-2,-1,0,0,3,3,7,9,10]
+    hidden: true
 ---
-
-## Question
-Write a function that receives two sorted arrays and merges them into a single sorted array.
-
-<CodeEditor 
-    initialCode={"const mergeSortedArrays = (array1, array2) => {\n...\n}"}
-    checkTests={[
-        {
-          id: 1,
-        call: "mergeSortedArrays([1,2,3], [4,5,6])",
-        expectedResult: [1,2,3,4,5,6]
-        },
-        {
-          id: 2,
-        call: "mergeSortedArrays([1,1,2,6], [2,7,9])",
-        expectedResult: [1,1,2,2,6,7,9]
-        },
-        {
-          id: 3,
-        call: "mergeSortedArrays([-1,0,3,3,9], [-2,0,7,10])",
-        expectedResult: [-2,-1,0,0,3,3,7,9,10],
-        hidden: true
-        },
-        ]}
-/>
 
 <details>
   <summary>See Solution</summary>

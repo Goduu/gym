@@ -16,6 +16,8 @@ export const useCodeEditorHandlers = ({ activityId, currentUserProgress, initial
     const [tests, setTests] = useState<CheckTest[]>(checkTests);
     const [loading, setLoading] = useState<boolean>(false)
     const userData = useUserContext()
+    const allTestsPassed = tests.every(test => test.expectedResult === test.evalResult)
+    const testsPassed = tests.map(test => test.expectedResult === test.evalResult ? test.id : null).filter((item) => item !== null)
 
     useEffect(() => {
         if (currentUserProgress) {
@@ -59,7 +61,7 @@ export const useCodeEditorHandlers = ({ activityId, currentUserProgress, initial
             userId: userData.id,
             activityId,
             code,
-            successfulTests: tests.map(test => test.expectedResult === test.evalResult ? test.id : null).filter((item) => item !== null)
+            successfulTests: testsPassed
         })
 
         setLoading(false)
@@ -70,6 +72,8 @@ export const useCodeEditorHandlers = ({ activityId, currentUserProgress, initial
         code,
         tests,
         loading,
+        allTestsPassed,
+        testsPassed,
         onChange,
         handleExecuteCode,
         handleSaveProgress

@@ -2,46 +2,33 @@
 id: 2
 title: Palindrome Checker
 description: Write a function that checks whether a given string is a palindrome.
+instructions: |
+  Write a function that checks whether a given string is a palindrome.
+
+  ### Palindrome
+  A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward.
+  For example: 
+  - "racecar" is a palindrome
+  - "hello" is not a palindrome
 date: "2024-03-20"
 language: "javascript"
+initialCode: "const isPalindrome = (str) => {\n...\n}"
+checkTests:
+  - id: 1
+    call: "isPalindrome('palindrome')"
+    expectedResult: false
+  - id: 2
+    call: "isPalindrome('mom')"
+    expectedResult: true
+  - id: 3
+    call: "isPalindrome('abcdf')"
+    expectedResult: false
+    hidden: true
+  - id: 4
+    call: "isPalindrome('abccba')"
+    expectedResult: true
+    hidden: true
 ---
-
-## Question
-Write a function that checks whether a given string is a palindrome.
-
-### Palindrome
-A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward.
-For example: 
-- "racecar" is a palindrome
-- "hello" is not a palindrome
-
-<CodeEditor 
-    initialCode={"const isPalindrome = (str) => {\n...\n}"}
-    checkTests={[
-        {
-          id: 1,
-        call:   "isPalindrome('palindrome')",
-        expectedResult: false
-        },
-        {
-          id: 2,
-        call:   "isPalindrome('mom')",
-        expectedResult: true
-        },
-        {
-          id: 3,
-          call: "isPalindrome('abcdf')",
-          expectedResult: false,
-          hidden: true
-        },
-        {
-          id: 4,
-          call: "isPalindrome('abccba')",
-          expectedResult: true,
-          hidden: true
-        },
-        ]}
-/>
 
 <details>
   <summary>See Solution</summary>

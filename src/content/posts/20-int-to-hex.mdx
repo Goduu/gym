@@ -2,52 +2,31 @@
 id: 20
 title: Int to Hexadecimal
 description: Given an integer, convert it to a hexadecimal representation.
+instructions: |
+    Write a function that takes an integer as input and returns its hexadecimal representation.
+    
+    For example, if the input is 26, the output should be "1a".
+    
+    You can assume that the input integer is non-negative.
 date: "2024-03-29"
 language: "javascript"
+initialCode: "const intToHex = (myInt) => {\n...\n}"
+checkTests:
+  - id: 1
+    call: "intToHex(4)"
+    expectedResult: "4"
+  - id: 2
+    call: "intToHex(26)"
+    expectedResult: "1a"
+  - id: 3
+    call: "intToHex(152)"
+    expectedResult: "98"
+    hidden: true
+  - id: 4
+    call: "intToHex(0)"
+    expectedResult: "0"
+    hidden: true
 ---
-
-## Question
-Given an integer, convert it to a hexadecimal representation.
-
-### Example
-```mathematica
-Input: 26
-Output: "1a"
-```
-
-<CodeEditor 
-    initialCode={`
-const intToHex = (myInt) => {\n...\n}`}
-    checkTests={[
-        {
-       id: 1,
-        call: `
-        intToHex(4)`,
-        expectedResult: "4"
-        },
-        {
-       id: 2,
-        call: `
-        intToHex(26)`,
-        expectedResult: "1a"
-        },
-        {
-       id: 3,
-        call: `
-        intToHex(152)`,
-        expectedResult: "98",
-        hidden: true
-        },
-        {
-       id: 4,
-        call: `
-        intToHex(0)`,
-        expectedResult: "0",
-        hidden: true
-        }
-        
-        ]}
-/>
 
 <details>
 <summary>See Solution</summary>

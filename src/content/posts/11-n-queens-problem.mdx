@@ -1,42 +1,31 @@
 ---
 id: 11
 title: N-Queens Problem
-description: Given an N×N chessboard, the task is to place N queens on the board in such a way that no two queens threaten each other.
+description: Write a function that returns the number of possible solutions to the N-Queens problem.
+instructions: |
+    Write a function that takes an integer N as input and returns the number of possible solutions to the N-Queens problem.
+    The function should return the number of possible solutions.
+    In chess, a queen can move horizontally, vertically, or diagonally, so no two queens can share the same row, column, or diagonal.
+    The function should return the number of possible solutions.
+    In the N-Queens problem you have to place N queens on an N×N chessboard in such a way that no two queens threaten each other.
 date: "2024-03-20"
 language: "javascript"
+initialCode: "const solveNQueens = (n) => {\n...\n}"
+checkTests:
+  - id: 1
+    call: "solveNQueens(2)"
+    expectedResult: 0
+  - id: 2
+    call: "solveNQueens(4)"
+    expectedResult: 2
+  - id: 3
+    call: "solveNQueens(11)"
+    expectedResult: 2680
+  - id: 4
+    call: "solveNQueens(10)"
+    expectedResult: 724
+    hidden: true
 ---
-
-## Question
-Given an N×N chessboard, the task is to place N queens on the board in such a way that no two queens threaten each other.
-In chess, a queen can move horizontally, vertically, or diagonally, so no two queens can share the same row, column, or diagonal.
-The function should return the number of possible solutions.
-
-<CodeEditor 
-    initialCode={"const solveNQueens = (n) => {\n...\n}"}
-    checkTests={[
-        {
-            id: 1,
-        call: "solveNQueens(2)",
-        expectedResult: 0
-        },
-        {
-            id: 2,
-        call: "solveNQueens(4)",
-        expectedResult: 2
-        },
-        {
-            id: 3,
-        call: "solveNQueens(11)",
-        expectedResult: 2680
-        },
-        {
-            id: 4,
-        call: "solveNQueens(10)",
-        expectedResult: 724,
-        hidden: true
-        },
-        ]}
-/>
 
 <details>
   <summary>See Solution</summary>

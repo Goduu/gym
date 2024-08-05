@@ -2,61 +2,51 @@
 id: 15
 title: Middle Element in Linked List
 description: Implement a function to find the middle element of a linked list.
+instructions: |
+    Implement a function to find the middle element of a linked list.
+
+    ### Tip
+
+    A linked list is a data structure that consists of nodes where each node contains a value and a reference to the next node in the sequence.
+    
+    To find the middle element of a linked list, you can use the two-pointer technique.
 date: "2024-03-28"
 language: "javascript"
----
-
-## Question
-Implement a function to find the middle element of a linked list.
-
-<CodeEditor 
-    initialCode={`
-class ListNode {
-    constructor(value) {
-        this.value = value;
-        this.next = null;
-        }
-}
-const createLinkedList = (arr, index = 0) => {
-    if (index === arr.length) {
-        return null; // Return null if the end of the array is reached
+initialCode: |
+    class ListNode {
+        constructor(value) {
+            this.value = value;
+            this.next = null;
+            }
     }
+    const createLinkedList = (arr, index = 0) => {
+        if (index === arr.length) {
+            return null; // Return null if the end of the array is reached
+        }
 
-    const head = new ListNode(arr[index]);
-    head.next = createLinkedList(arr, index + 1); // Recursive call to create the next node
-    return head;
-} 
-const findMiddleElement = (head) => {\n...\n}`}
-    checkTests={[
-        {
-        id: 1,
-        call: `
-        // list: 1 -> 2 -> 3 -> 4 -> 5 
+        const head = new ListNode(arr[index]);
+        head.next = createLinkedList(arr, index + 1); // Recursive call to create the next node
+        return head;
+    } 
+    const findMiddleElement = (head) => {\n...\n}`
+checkTests: 
+    - id: 1
+      call: |
         const head = createLinkedList([1,2,3,4,5]);
-        findMiddleElement(head)`,
-        expectedResult: 3
-        },
-        {
-        id: 2,
-        call: 
-        `
-        // list: 1 
+        findMiddleElement(head)
+      expectedResult: 3
+    - id: 2
+      call: |
         const head = createLinkedList([1]);
-        findMiddleElement(head)`,
-        expectedResult: 1
-        },
-        {
-        id: 3,
-        call: 
-        `
-        // list: 1 -> 10 -> 4 
+        findMiddleElement(head)
+      expectedResult: 1
+    - id: 3
+      call: |
         const head = createLinkedList([1,10,4]);
-        findMiddleElement(head)`,
-        expectedResult: 10,
-        hidden: true
-        },
-        ]}
-/>
+        findMiddleElement(head)
+      expectedResult: 10
+      hidden: true
+---
 
 <details>
   <summary>See Solution</summary>

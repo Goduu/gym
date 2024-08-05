@@ -2,48 +2,44 @@
 id: 9
 title: Check if Two Strings are Anagrams
 description: Write a function that checks if two strings are anagrams
+instructions: |
+    Write a function that checks if two strings are anagrams.
+    An anagram is a word or phrase formed by rearranging the letters of a different word or phrase,
+    typically using all the original letters exactly once.
+    
+    For example, the strings 'aabbcc' and 'ccbbaa' are anagrams.
+    The function should return true if the strings are anagrams and false otherwise.
+    
+    The function should have the following signature:
+    
+    `const areAnagrams = (str1, str2) => {...}`
+    
+    The function should return a boolean value.
+    
+    For example, `areAnagrams('aabbcc', 'ccbbaa')` should return `true`.
 date: "2024-03-20"
 language: "javascript"
+initialCode: "const areAnagrams = (str1, str2) => {\n...\n}"
+checkTests:
+  - id: 1
+    call: "areAnagrams('aabbcc', 'ccbbaa')"
+    expectedResult: true
+  - id: 2
+    call: "areAnagrams('banana', 'orange')"
+    expectedResult: false
+  - id: 3
+    call: "areAnagrams('listen', 'silent')"
+    expectedResult: true
+    hidden: true
+  - id: 4
+    call: "areAnagrams('alcapaha', 'pahaalca')"
+    expectedResult: true
+    hidden: true
+  - id: 5
+    call: "areAnagrams('', '')"
+    expectedResult: true
+    hidden: true
 ---
-
-## Question
-Write a function that checks if two strings are anagrams.
-An anagram is a word or phrase formed by rearranging the letters of a different word or phrase,
-typically using all the original letters exactly once.
-
-<CodeEditor 
-    initialCode={"const areAnagrams = (str1, str2) => {\n...\n}"}
-    checkTests={[
-        {
-         id: 1,
-        call: "areAnagrams('aabbcc', 'ccbbaa')",
-        expectedResult: true
-        },
-        {
-         id: 2,
-        call: "areAnagrams('banana', 'orange')",
-        expectedResult: false
-        },
-        {
-         id: 3,
-        call: "areAnagrams('listen', 'silent')",
-        expectedResult: true,
-        hidden: true
-        },
-        {
-         id: 4,
-        call: "areAnagrams('alcapaha', 'pahaalca')",
-        expectedResult: true,
-        hidden: true
-        },
-      {
-         id: 5,
-         call: "areAnagrams('', '')",
-         expectedResult: true,
-         hidden: true
-      },
-        ]}
-/>
 
 <details>
   <summary>See Solution</summary>

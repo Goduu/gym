@@ -2,42 +2,51 @@
 id: 13
 title: Bubble Sort
 description: Implement a function that sorts an array using the bubble sort algorithm.
+instructions: |
+    Bubble Sort is a sorting algorithm that repeatedly steps through the list, compares adjacent elements, 
+    and swaps them if they are in the wrong order. The pass through the list is repeated until no swaps are needed,
+    which indicates that the list is sorted.
+
+    Implement a function `bubbleSort` that takes an array of integers as input and returns the sorted array using the Bubble Sort algorithm.
+
+    The function should have the following signature:
+    
+    `const bubbleSort = (myArray) => {...}`
+
+    The function should return an array of integers in non-decreasing order.
+    
+    For example, `bubbleSort([9,4,2,1,5])` should return `[1,2,4,5,9]`.
+
+    ### Tip
+
+    The Bubble Sort algorithm works as follows:
+
+    1. Start with the first element in the array.
+    2. Compare it with the next element.
+    3. If the first element is greater than the next element, swap them.
+    4. Move to the next element and repeat steps 2 and 3.
+    5. Continue this process until no swaps are needed.
+
+    PS: The checks doesn't check if you sorted the array correctly using bubble sort, just if the array is sorted. Make you best.
 date: "2024-03-20"
 language: "javascript"
+initialCode: "const bubbleSort = (myArray) => {\n...\n}"
+checkTests:
+  - id: 1
+    call: "bubbleSort([9,4,2,1,5])"
+    expectedResult: [1,2,4,5,9]
+  - id: 2
+    call: "bubbleSort([])"
+    expectedResult: []
+  - id: 3
+    call: "bubbleSort([9,-1,4,-2,-3,8])"
+    expectedResult: [-3,-2,-1,4,8,9]
+    hidden: true
+  - id: 4
+    call: "bubbleSort([1,2,3,4,5,6])"
+    expectedResult: [1,2,3,4,5,6]
+    hidden: true
 ---
-
-## Question
-Bubble Sort is a sorting algorithm that repeatedly steps through the list, compares adjacent elements, 
-and swaps them if they are in the wrong order. The pass through the list is repeated until no swaps are needed,
-which indicates that the list is sorted.
-
-<CodeEditor 
-    initialCode={"const bubbleSort = (myArray) => {\n...\n}"}
-    checkTests={[
-        {
-            id: 1,
-        call: "bubbleSort([9,4,2,1,5])",
-        expectedResult: [1,2,4,5,9]
-        },
-        {
-            id: 2,
-        call: "bubbleSort([])",
-        expectedResult: []
-        },
-        {
-            id: 3,
-        call: "bubbleSort([9,-1,4,-2,-3,8])",
-        expectedResult: [-3,-2,-1,4,8,9],
-        hidden: true
-        },
-        {
-            id: 4,
-        call: "bubbleSort([1,2,3,4,5,6])",
-        expectedResult: [1,2,3,4,5,6],
-        hidden: true
-        },
-        ]}
-/>
 
 <details>
   <summary>See Solution</summary>
